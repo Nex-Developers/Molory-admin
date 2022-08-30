@@ -15,6 +15,7 @@ export async function getUsers() {
         return data
     } catch (err) {
         console.log(err.message)
+        if(err.message.includes("403")) removeSessionToken()
     }
 }
 
@@ -36,6 +37,7 @@ export async function updateUser(body: any) {
         getUsers()
     } catch (err) {
         console.log(err.message)
+        if(err.code === 403) removeSessionToken()
     }
 }
 

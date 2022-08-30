@@ -1,6 +1,6 @@
 <template>
   <div class="w-full p-2">
-    <div>{{ title }}</div>
+    <div class="text-center text-white text-lg bg-primary uppercase">{{ title }}</div>
     <table class="w-full border-separate border-spacing-y-2">
       <thead class="w-full">
         <tr class="h-16 text-primary text-left capitalize">

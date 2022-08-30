@@ -30,8 +30,7 @@ export async function userLogout() {
     }
     await $fetch(`${config.BASE_URL}/auth/logout`, { method: 'POST', headers })
     useState('user').value = null
-    window.sessionStorage.removeItem('m_auth_ss')
-    await useRouter().push('/login')
+    removeSessionToken()
 }
 
 export async function registerWithEmail(
@@ -79,4 +78,8 @@ export async function loginWithEmail(email: string, password: string) {
     console.log(token)
     setSession(token, data)
     await useRouter().push('/')
+}
+export async function removeSessionToken() {
+    window.sessionStorage.removeItem('m_auth_ss')
+    useRouter().push('/login')
 }
