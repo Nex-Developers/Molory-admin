@@ -5,11 +5,11 @@
       <Pagetitle title="Settings/Vehicle Types" />
       <!-- stats card -->
       <div class="w-full mt-6 grid grid-cols-3 justify-center gap-2">
-        <InfosCard
+        <VehicleTypeItem
           v-for="vehicleType of vehicleTypes"
           :key="vehicleType.id"
           :id="vehicleType.id"
-          :title="vehicleType.name"
+          :name="vehicleType.name"
           :description="vehicleType.description"
           :maxSeats="vehicleType.maxSeats"
           :edit="true"
@@ -19,10 +19,7 @@
       </div>
     </div>
     <RightSidePanel title="Add Vehicle Type" ref="rightSidePanel">
-      <InfosCard
-        :maxSeats="4"
-        :edit="true"
-        :editMode="true"
+      <VehicleTypeForm
         @onValidate="onAddVehicleType"
       />
     </RightSidePanel>
@@ -48,22 +45,9 @@ getVehicleTypes();
 const rightSidePanel = ref();
 
 const onAddVehicleType = async (form) => {
-  const body = {
-    name: form.title,
-    description: form.description,
-    maxSeats: form.maxSeats,
-  };
-  await addVehicleType(body);
+  await addVehicleType(form);
   rightSidePanel.value.onClose();
 };
-const onEditVehicleType = (form) => {
-  const body = {
-    id: form.id,
-    name: form.title,
-    description: form.description,
-    maxSeats: form.maxSeats,
-  };
-  updateVehicleType(body);
-};
+const onEditVehicleType = (form) => updateVehicleType(form);
 const onDeleteVehicleType = (id) => deleteVehicleType({ id });
 </script>

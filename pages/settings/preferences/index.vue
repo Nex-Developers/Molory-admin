@@ -26,12 +26,12 @@ const onDeletePreference = (id) => deletePreference({ id });
       <Pagetitle title="Settings/Preferences" />
       <!-- stats card -->
       <div class="w-full mt-6 grid grid-cols-3 justify-center gap-2">
-        <InfosCard
+        <PreferenceItem
           v-for="preference of preferences"
           :key="preference.id"
           :id="preference.id"
-          :title="preference.title"
-          :description="preference.description"
+          :question="preference.question"
+          :answer="preference.answer"
           :edit="true"
           :deleteMode="true"
           @onValidate="onEditPreference"
@@ -39,11 +39,8 @@ const onDeletePreference = (id) => deletePreference({ id });
       </div>
     </div>
     <RightSidePanel title="Add Preference" ref="rightSidePanel">
-      <InfosCard
-        :edit="true"
-        :editMode="true"
+      <PreferenceForm
         @onValidate="onAddPreference"
-        @onDelete="onDeletePreference"
       />
     </RightSidePanel>
   </NuxtLayout>

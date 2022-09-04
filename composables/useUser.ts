@@ -21,9 +21,39 @@ export async function getUsers() {
 
 
 export async function getUser(id: number) {
-    if (!useState<IUser[]>('users').value) await getUsers()
-    return  ref(useState<IUser[]>('users').value.find(item => item.id === id))
+    // if (!useState<IUser[]>('users').value) await getUsers()
+    // return  ref(useState<IUser[]>('users').value.find(item => item.id === id))
+    const config = useRuntimeConfig()
+    try {
+        const headers = {
+            Authorization: 'Bearer ' + useState<string>('auth_token').value,
+            'Content-Type': 'Application/json'
+        }
+        const { data } = await $fetch<any>(`${config.BASE_URL}/user/${id}`, { method: 'GET', headers })
+        console.log(data)
+        return data
+    } catch (err) {
+        console.log(err.message)
+        if(err.message.includes("403")) removeSessionToken()
+    }
 }
+
+export async function addUser(body: any) {
+    const config = useRuntimeConfig()
+    console.log(useState<string>('auth_token').value)
+    const headers = {
+        Authorization: 'Bearer ' + useState<string>('auth_token').value,
+        'Content-Type': 'Application/json'
+    }
+    try {
+        const { data } = await $fetch<any>(`${config.BASE_URL}/user`, { method: "POST", headers, body })
+        getUsers()
+    } catch (err) {
+        console.log(err.message)
+        if(err.code === 403) removeSessionToken()
+    }
+}
+
 
 export async function updateUser(body: any) {
     const config = useRuntimeConfig()

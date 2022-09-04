@@ -21,7 +21,7 @@ export async function getTrips() {
 
 export async function getTrip(id: number) {
     if (!useState<ITrip[]>('trips').value) await getTrips()
-    return  ref(useState<ITrip[]>('Trips').value.find(item => item.id === id))
+    return  ref(useState<ITrip[]>('trips').value.find(item => item.id === id))
 }
 
 export async function updateTrip(body: any) {

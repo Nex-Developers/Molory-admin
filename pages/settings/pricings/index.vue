@@ -18,7 +18,7 @@ getPricings()
       <!-- stats card -->
       <div class="w-full mt-6 flex justify-center gap-2">
           <div class="w-3/4">
-              <PricingCard v-for="pricing in pricings" :key="pricing.name" :data="pricing"  />
+              <PricingItem v-for="pricing in pricings" :key="pricing.name" :data="pricing"  />
           </div>
       </div>
     </div>

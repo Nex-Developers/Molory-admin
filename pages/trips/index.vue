@@ -4,15 +4,16 @@
       <!-- page title -->
       <Pagetitle title="Trajets" />
       <!-- stats card -->
-    <div class="w-full mt-6">
-        <TripCard v-for="trip in trips"  :key="trip.id" :data="trip" />
-    </div>
-
+      <div class="w-full mt-6 flex justify-center gap-2">
+        <div class="w-3/4">
+          <TripCard v-for="trip in trips" :key="trip.id" :data="trip" @click="details(trip.id)" />
+        </div>
+      </div>
     </div>
   </NuxtLayout>
 </template>
 <script lang="ts" setup>
-import { ITrip } from '~~/types';
+import { ITrip } from "~~/types";
 
 definePageMeta({
   title: "Trajets",
@@ -20,12 +21,12 @@ definePageMeta({
   layout: "private",
 });
 
-const trips = useState<ITrip[]>('trips');
+const trips = useState<ITrip[]>("trips");
 
 const details = (id) => {
-  const router = useRouter()
-  router.push('/trips/'+id)
-}
+  const router = useRouter();
+  router.push("/trips/" + id);
+};
 
-getTrips()
+getTrips();
 </script>

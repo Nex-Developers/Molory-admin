@@ -39,56 +39,81 @@ const onCancel = () => {
 
 
 <template>
-  <div class="w-full">
-    <div class="w-full grid place-items-center my-8">
-      <div class="w-24 h-24 rounded-full border border-secondary">
-        <img
-          :src="data.avatar || '/img/user.jpeg'"
-          class="w-full h-full rounded-full"
-          alt=""
-        />
-      </div>
+
+  <div class="bg-white w-full pb-4  border-t-4 rounded-sm border-primary">
+    <div class="image overflow-hidden">
+      <img
+        class="aspect-square w-full mx-auto"
+        :src="data.avatar || 'https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg'"
+        alt=""
+      />
     </div>
-    <div class="flex border-b text-sm border-gray-200 py-4 gap-8">
-      <div class="w-28">First Name</div>
-      <div class="text-primary">
+    
+    
+    <ul
+      class="
+        text-gray-600
+        hover:text-gray-700 hover:shadow
+        py-2
+        px-3
+        divide-y
+        rounded
+        shadow-sm
+      "
+    >
+    <li class="flex items-center py-3">
+      <span>First Name</span>
+      <span class="text-primary ml-auto">
         <input v-if="editMode" type="text" v-model="form.firstName" />
         <span v-else> {{ data.firstName }}</span>
-      </div>
-    </div>
-    <div class="flex border-b text-sm border-gray-200 py-4 gap-8">
-      <div class="w-28">Last Name</div>
-      <div class="text-primary">
+      </span>
+    </li>
+    <li class="flex items-center py-3">
+      <span>Last Name</span>
+      <span class="text-primary ml-auto">
         <input v-if="editMode" type="text" v-model="form.lastName" />
         <span v-else> {{ data.lastName }}</span>
-      </div>
-    </div>
-    <div class="flex border-b text-sm border-gray-200 py-4 gap-8">
-      <div class="w-28">Phone Number</div>
-      <div class="text-primary">
+      </span>
+    </li>
+    <li class="flex items-center py-3">
+      <span>Phone Number</span>
+      <span class="text-primary ml-auto">
         {{ data.phoneNumber }}
-      </div>
-    </div>
-    <div class="flex border-b text-sm border-gray-200 py-4 gap-8">
-      <div class="w-28">Gender</div>
-      <div class="text-primary">
+      </span>
+    </li>
+    <li class="flex items-center py-3">
+      <span>Gender</span>
+      <span class="text-primary ml-auto">
         <input v-if="editMode" type="text" v-model="form.gender" />
         <span v-else> {{ data.gender }}</span>
-      </div>
-    </div>
-    <div class="flex border-b text-sm border-gray-200 py-4 gap-8">
-      <div class="w-28">Birthday</div>
-      <div class="text-primary">
-          <input v-if="editMode" type="text" v-model="form.birthDay" />
+      </span>
+    </li>
+    <li class="flex items-center py-3">
+      <span>Birthday</span>
+      <span class="text-primary ml-auto">
+        <input v-if="editMode" type="text" v-model="form.birthDay" />
         <span v-else> {{ data.birthDay }}</span>
-      </div>
-    </div>
-    <div class="flex border-b text-sm border-gray-200 py-4 gap-8">
-      <div class="w-28">Role</div>
-      <div class="text-primary">
+      </span>
+    </li>
+    <li class="flex items-center py-3">
+      <span>Role</span>
+      <span class="text-primary ml-auto">
         {{ data.role }}
-      </div>
-    </div>
+      </span>
+    </li>
+      <li class="flex items-center py-3">
+        <span>Status</span>
+        <span class="ml-auto"
+          ><span class="bg-green-500 py-1 px-2 rounded text-white text-sm"
+            >Active</span
+          ></span
+        >
+      </li>
+      <li class="flex items-center py-3">
+        <span>Member since</span>
+        <span class="text-primary ml-auto">{{ data.createdAt}}</span>
+      </li>
+    </ul>
     <div v-if="edit && !editMode" class="flex justify-center mt-4">
       <button
         @click="onEdit"
@@ -112,4 +137,5 @@ const onCancel = () => {
       </button>
     </div>
   </div>
+  <!-- End of profile card -->
 </template>

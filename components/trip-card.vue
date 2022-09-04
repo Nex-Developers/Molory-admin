@@ -9,9 +9,10 @@ const props = defineProps({
 
 <template>
   <div
-    class="w-full p-2 grid grid-cols-3 gap-2 min-h-20 my-2 bg-white shadow-sm"
+    class="w-full p-2 flex justify-between gap-2 min-h-20 my-2 bg-white shadow-sm text-sm"
   >
-    <div class="flex gap-4 items-center">
+  <div class="space-y-4">
+    <div class="flex gap-4 items-center ">
       <div class="h-10 w-10">
         <img
           class="h-full w-full rounded-full"
@@ -22,8 +23,11 @@ const props = defineProps({
       <div>
         <h2>{{ data.user.firstName }} {{ data.user.lastName }}</h2>
         <p class="text-gray-400 text-sm">{{ data.user.phoneNumber }}</p>
+        
       </div>
-      <div class="flex gap-2">
+      
+    </div>
+    <div class="flex gap-2">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,23 +47,24 @@ const props = defineProps({
           <span>{{ data.vehicle.numberPlate }}</span>
         </div>
       </div>
-    </div>
+  </div>
+    
 
     <div>
       <div
         v-for="route in data.routes"
         :key="route.id"
-        class="grid grid-cols-3 items-center"
+        class="grid grid-cols-3 items-center border border-primary text-xs rounded-md p-2"
       >
-        <div class="text-center">
+        <div class="text-center ">
           <span>{{ route.stops[0].address }}</span>
         </div>
         <div>
-          <div class="text-center">
+          <div class="text-center text-sm text-primary">
             <span> {{ route.price }} F</span>
           </div>
           <hr class="w-full" />
-          <div class="text-center">
+          <div class="text-center ">
             <span>{{ route.distance }} km ~ {{ route.duration }} h</span>
           </div>
         </div>
@@ -68,21 +73,25 @@ const props = defineProps({
         </div>
       </div>
     </div>
-    <div class="relative">
-      <span class="bg-primary absolute top-0 right-0"
+    <div class="relative text-xs">
+      <span :class="{'absolute top-0 right-0 p-1 rounded-md': true, 'bg-red-500': data.remainingSeats > 0,   'bg-green-500': data.remainingSeats  == 0}"
         >{{ data.remainingSeats }}/ {{ data.seats }}</span
       >
-      <div class="flex gap-2">
+      <div class=" mb-4 flex gap-2">
         <span>Departure</span>
         <span>{{ data.departureDate }} {{ data.departureTime }}</span>
       </div>
-      <div class="flex gap-2">
+      <div class=" mb-4 flex gap-2">
         <span>Published</span>
         <span>{{ data.createdAt }}</span>
       </div>
-      <div class="flex gap-2">
-        <span>Status</span>
-        <span>{{ data.status }}</span>
+      <div class="flex gap-2 ">
+        <span>Status: </span>
+        <span class="text-blue-900" v-if="data.status===3">En attente</span>
+        <span class="text-purple-900" v-else-if="data.status===2">En route</span>
+        <span class="text-green-900" v-if="data.status===1">Arrive</span>
+        <span class="text-red-700" v-if="data.status===0">Annule</span>
+
       </div>
     </div>
   </div>

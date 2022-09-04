@@ -20,10 +20,10 @@ module.exports = {
         dark: "",
         light: "#FFFFFF",
         medium: "#F8F8F8",
-        info: "",
-        danger: "",
+        info: "#1132ff",
+        danger: "#b31300",
         warning: "",
-        success: ""
+        success: "#00b333"
       }
     },
   },

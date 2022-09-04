@@ -2,17 +2,17 @@
   <NuxtLayout>
     <div class="w-full h-full bg-medium px-10 py-8">
       <!-- page title -->
-      <Pagetitle title="Wallet" />
+      <Pagetitle title="Operations" />
       <!-- stats card -->
       <div class="grid grid-cols-3  mt-6">
         <div class="w-full flex justify-center">
             <div class="w-80 h-40 bg-white shadow-md">
-                <h3>Income</h3>
+                <h3>Entrance</h3>
             </div>
         </div>
         <div class="w-full flex justify-center">
             <div class="w-80 h-40 bg-white shadow-md">
-                <h3>Income</h3>
+                <h3>Ouput</h3>
             </div>
         </div>
        <div class="w-full flex justify-center">
