@@ -1,3 +1,16 @@
+<script lang="ts" setup>
+import { IUser } from "~~/types/IUser";
+
+definePageMeta({
+  title: "User Details",
+  middleware: "auth",
+  layout: "private",
+});
+const route = useRoute();
+const id = +route.params.id;
+const user = await getUser(id);
+</script>
+
 <template>
   <NuxtLayout>
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto">
@@ -10,7 +23,7 @@
           <div class="w-full md:w-3/12 md:mx-2">
             <!-- Profile Card -->
 
-            <UserInfosPanel :data="user" :edit="true" />
+            <UserInfosPanel :data="user" :id="id" :edit="true" />
             <div class="my-4"></div>
           </div>
           <!-- Right Side -->
@@ -47,7 +60,17 @@
                 </div>
               </div>
 
-              <div class="bg-white p-3 shadow-sm rounded-sm grid 2xl:grid-cols-2 place-items-center">
+              <div
+                class="
+                  bg-white
+                  p-3
+                  shadow-sm
+                  rounded-sm
+                  grid
+                  2xl:grid-cols-2
+                  place-items-center
+                "
+              >
                 <div class="text-secondary flex justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +94,17 @@
                 </div>
               </div>
 
-              <div class="bg-white p-3 shadow-sm rounded-sm grid 2xl:grid-cols-2 place-items-center">
+              <div
+                class="
+                  bg-white
+                  p-3
+                  shadow-sm
+                  rounded-sm
+                  grid
+                  2xl:grid-cols-2
+                  place-items-center
+                "
+              >
                 <div class="text-primary flex justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +124,17 @@
                 <!-- icon dollar -->
               </div>
 
-              <div class="bg-white p-3 shadow-sm rounded-sm grid 2xl:grid-cols-2 place-items-center">
+              <div
+                class="
+                  bg-white
+                  p-3
+                  shadow-sm
+                  rounded-sm
+                  grid
+                  2xl:grid-cols-2
+                  place-items-center
+                "
+              >
                 <div class="text-success flex justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -389,14 +432,3 @@
     </div>
   </NuxtLayout>
 </template>
-<script lang="ts" setup>
-import { IUser } from "~~/types/IUser";
-
-definePageMeta({
-  title: "User Details",
-  middleware: "auth",
-  layout: "private",
-});
-const route = useRoute();
-const user = await getUser(+route.params.id);
-</script>

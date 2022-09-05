@@ -10,7 +10,7 @@
           <div class="w-full md:w-3/12 md:mx-2">
             <!-- Profile Card -->
 
-            <UserInfos :data="trip.user"></UserInfos>
+            <UserInfos :data="trip.user" :id="trip.user.id"></UserInfos>
             <div class="my-4"></div>
           </div>
           <!-- Right Side -->

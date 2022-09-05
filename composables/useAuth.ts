@@ -70,14 +70,19 @@ export async function registerWithEmail(
 
 export async function loginWithEmail(email: string, password: string) {
     const config = useRuntimeConfig()
-    const { data, token, message, statusCode, error } = await $fetch<{ token: string, statusCode: number, message: string, data: IUser, error?: string }>(`${config.BASE_URL}/auth/login`, { method: 'POST', body: { email: email, password: password } })
-    if (error) {
-        window.alert(error)
-        return { hasErrors: true, errors: new Map([['email', { check: 'email', message: error }]]) }
+    try {
+        const { data, token, message, statusCode, error } = await $fetch<{ token: string, statusCode: number, message: string, data: IUser, error?: string }>(`${config.BASE_URL}/auth/login`, { method: 'POST', body: { email: email, password: password } })
+        if (error) {
+            window.alert(error)
+            return { hasErrors: true, errors: new Map([['email', { check: 'email', message: error }]]) }
+        }
+        console.log(token, message, error, statusCode)
+        setSession(token, data)
+        await useRouter().push('/')
+    } catch(error) { 
+        console.log(error) 
     }
-    console.log(token)
-    setSession(token, data)
-    await useRouter().push('/')
+ 
 }
 export async function removeSessionToken() {
     window.sessionStorage.removeItem('m_auth_ss')

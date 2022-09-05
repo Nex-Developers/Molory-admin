@@ -1,5 +1,6 @@
 <script lang="ts" setup>
     const props = defineProps({
+      id: Number,
       data: Object,
       edit: {
         type: Boolean,
@@ -9,7 +10,7 @@
     
     const form = computed(() => {
       return {
-        id: props.data.id,
+        id: props.id,
         firstName: props.data.firstName,
         lastName: props.data.lastName,
         gender: props.data.gender,

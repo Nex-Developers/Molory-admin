@@ -1,3 +1,38 @@
+<script lang="ts" setup>
+  import { IUser } from "~~/types/IUser";
+  
+  definePageMeta({
+    title: "Document Details",
+    middleware: "auth",
+    layout: "private",
+  });
+  const route = useRoute();
+  const router = useRouter();
+  const id = +route.params.id;
+  const user = ref<IUser>(null);
+  user.value = await getDocument(id);
+  console.log(user);
+  const idCardTitle = "ID Card";
+  const driverLicenseTitle = "Driver License";
+  const onReject = (response, title) => {
+    if (title === idCardTitle) validateIdCard(user.value.id, response);
+    else if (title === driverLicenseTitle)
+      validateDriverLicense(user.value.id, response);
+    else window.alert("Invalid title");
+    router.push('/documents');
+  };
+  
+  const onValidate = (response, title) => {
+    const cardNumber = response;
+    if (title === idCardTitle)
+      validateIdCard(user.value.id, "validate", cardNumber);
+    else if (title === driverLicenseTitle)
+      validateDriverLicense(user.value.id, "validate", cardNumber);
+    else window.alert("Invalid title");
+    router.push('/documents');
+  };
+  </script>
+
 <template>
   <NuxtLayout>
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto">
@@ -11,7 +46,7 @@
           <div class="w-full md:w-3/12 md:mx-2">
             <!-- Profile Card -->
 
-            <UserInfosPanel :data="user" :edit="true" />
+            <UserInfosPanel :data="user" :id="id"  />
             <div class="my-4"></div>
           </div>
           <!-- Right Side -->
@@ -71,37 +106,3 @@
     </div>
   </NuxtLayout>
 </template>
-<script lang="ts" setup>
-import { IUser } from "~~/types/IUser";
-
-definePageMeta({
-  title: "Document Details",
-  middleware: "auth",
-  layout: "private",
-});
-const route = useRoute();
-const router = useRouter();
-console.log(route.params.id);
-const user = ref<IUser>(null);
-user.value = await getDocument(+route.params.id);
-console.log(user);
-const idCardTitle = "ID Card";
-const driverLicenseTitle = "Driver License";
-const onReject = (response, title) => {
-  if (title === idCardTitle) validateIdCard(user.value.id, response);
-  else if (title === driverLicenseTitle)
-    validateDriverLicense(user.value.id, response);
-  else window.alert("Invalid title");
-  router.push('/documents');
-};
-
-const onValidate = (response, title) => {
-  const cardNumber = response;
-  if (title === idCardTitle)
-    validateIdCard(user.value.id, "validate", cardNumber);
-  else if (title === driverLicenseTitle)
-    validateDriverLicense(user.value.id, "validate", cardNumber);
-  else window.alert("Invalid title");
-  router.push('/documents');
-};
-</script>
