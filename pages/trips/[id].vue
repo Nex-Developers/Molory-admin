@@ -34,7 +34,7 @@
               </div>
 
               <div class="bg-white p-3 shadow-sm rounded-sm">
-                <span>3/4</span>
+                <span>{{ trip.seats - trip.remainingSeats}}/{{trip.seats}}</span>
                 <!-- icon users -->
               </div>
             </div>

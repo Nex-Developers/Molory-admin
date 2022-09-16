@@ -63,8 +63,9 @@ export async function updateUser(body: any) {
         'Content-Type': 'Application/json'
     }
     try {
-        const { data } = await $fetch<any>(`${config.BASE_URL}/user`, { method: "PATCH", headers, body })
-        getUsers()
+        await $fetch<any>(`${config.BASE_URL}/user`, { method: "PATCH", headers, body })
+        const { data } =  await getUser(body.id)
+        return data
     } catch (err) {
         console.log(err.message)
         if(err.code === 403) removeSessionToken()

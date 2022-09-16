@@ -42,9 +42,9 @@ const props = defineProps({
         </div>
         <div>
           <h2 class="text-sm text-gray-400">
-            {{ data.vehicle.type }} {{ data.vehicle.color }}
+            <!-- {{ data.vehicle.type }} {{ data.vehicle.color }} -->
           </h2>
-          <span>{{ data.vehicle.numberPlate }}</span>
+          <!-- <span>{{ data.vehicle.numberPlate }}</span> -->
         </div>
       </div>
   </div>
@@ -75,7 +75,7 @@ const props = defineProps({
     </div>
     <div class="relative text-xs">
       <span :class="{'absolute top-0 right-0 p-1 rounded-md': true, 'bg-red-500': data.remainingSeats > 0,   'bg-green-500': data.remainingSeats  == 0}"
-        >{{ data.remainingSeats }}/ {{ data.seats }}</span
+        >{{ data.seats - data.remainingSeats }}/ {{ data.seats }}</span
       >
       <div class=" mb-4 flex gap-2">
         <span>Departure</span>

@@ -27,10 +27,10 @@
       editMode.value = true;
     };
     
-    const onValidate = () => {
+    const onValidate = async () => {
       editMode.value = false;
-      console.log(form.value);
-      updateUser(form.value);
+      props.data = await updateUser(form.value);
+      location.reload()
     };
     
     const onCancel = () => {
