@@ -21,7 +21,7 @@ const onDeletePreference = (id) => deletePreference({ id });
 </script>
 <template>
   <NuxtLayout>
-    <div class="w-full h-full bg-medium px-10 py-8">
+    <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto">
       <!-- page title -->
       <Pagetitle title="Settings/Preferences" />
       <!-- stats card -->

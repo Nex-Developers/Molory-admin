@@ -9,11 +9,13 @@ definePageMeta({
 const route = useRoute();
 const id = +route.params.id;
 const user = await getUser(id);
+const isLoadingData = useState<boolean>('showLoader');
+
 </script>
 
 <template>
   <NuxtLayout>
-    <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto">
+    <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto relative">
       <!-- page title -->
       <Pagetitle :title="'Users/' + user.lastName + ' ' + user.firstName" />
       <!-- stats card -->
@@ -429,6 +431,8 @@ const user = await getUser(id);
           </div>
         </div>
       </div>
+      <AlertsLoader v-if="isLoadingData" />
+
     </div>
   </NuxtLayout>
 </template>

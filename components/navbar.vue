@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 const user = useState<IUser>("user");
+const load = () => {
+  showLoader(true, 'chargement')
+}
 </script>
 
 
@@ -39,7 +42,7 @@ const user = useState<IUser>("user");
           placeholder="Search for transaction, item,"
           class="p-2 bg-medium w-80 rounded-none"
         />
-        <button class="w-36 bg-primary text-light py-2">Rechercher</button>
+        <button class="w-36 bg-primary text-light py-2" @click="load">Rechercher</button>
       </div>
       <div class="flex">
         <div>
@@ -80,7 +83,7 @@ const user = useState<IUser>("user");
         >
           <img
             class="w-full h-full rounded-full"
-            :src="user.avatar || '/img/user.jpeg'"
+            :src="user?.avatar || '/img/user.jpeg'"
             alt="avatar"
           />
         </div>

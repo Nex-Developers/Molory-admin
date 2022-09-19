@@ -1,12 +1,13 @@
 <template>
   <NuxtLayout>
-    <div class="w-full h-full bg-medium px-10 py-8">
+    <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto relative">
       <!-- page title -->
       <Pagetitle title="Documents" />
       <!-- stats card -->
       <div class="w-full mt-6 bg-white shadow-md">
         <Table :headers="dataTableHeaders" :data="documents" :details="details" />
       </div>
+      <AlertsLoader v-if="isLoadingData" />
     </div>
   </NuxtLayout>
 </template>
@@ -27,6 +28,9 @@ const dataTableHeaders = [
   { label: "ID Card", field: "idCardStatus" },
   { label: "Driver License", field: "driverLicenseStatus" },
 ];
+
+const isLoadingData = useState<boolean>('showLoader');
+
 getDocuments()
 // .then((res: any) => {
 //   data.value = res.value.data;

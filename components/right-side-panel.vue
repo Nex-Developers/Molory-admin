@@ -11,7 +11,7 @@ defineExpose({
 </script>
 
 <template>
-  <div class="absolute flex h-calc z-50 right-0">
+  <div class="absolute flex h-calc z-40 right-0">
     <button
       @click="onDisplayForm"
       class="bg-white text-primary p-2 h-fit text-lg mt-6 shadow-md"

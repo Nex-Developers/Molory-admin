@@ -20,8 +20,12 @@ const details = (id) => {
   const router = useRouter();
   router.push("/users/" + id);
 };
+const isFormLoading = ref(false);
+const isLoadingData = useState<boolean>('showLoader');
 const onAddUser = async (form) => {
+  isFormLoading.value = true;
   await addUser(form);
+  isFormLoading.value = false;
   rightSidePanel.value.onClose();
 };
 getUsers();
@@ -29,16 +33,17 @@ getUsers();
 
 <template>
   <NuxtLayout>
-    <div class="w-full h-full bg-medium px-10 py-8">
+    <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto relative">
       <!-- page title -->
       <Pagetitle title="Users" />
       <!-- stats card -->
-      <div class="w-full mt-6 bg-white shadow-md">
+      <div class="w-full mt-6 bg-white shadow-md ">
         <Table :headers="usersTableHeaders" :data="users" :details="details" />
       </div>
+      <AlertsLoader v-if="isLoadingData" />
     </div>
     <RightSidePanel title="Add Admin" ref="rightSidePanel">
-      <UserForm @onValidate="onAddUser" />
+      <UserForm @onValidate="onAddUser" :isLoading="isFormLoading" />
     </RightSidePanel>
   </NuxtLayout>
 </template>
