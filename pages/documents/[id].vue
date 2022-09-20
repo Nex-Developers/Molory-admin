@@ -111,6 +111,7 @@ const isLoadingData = useState<boolean>('showLoader');
                 </div>
                 <DocumentCardFooter
                   :title="driverLicenseTitle"
+                  response=""
                   :isLoadingValidate="isLoadingValidate"
                   :isLoadingReject="isLoadingReject"
                   @reject="onReject"
