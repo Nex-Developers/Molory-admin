@@ -1,8 +1,9 @@
 <script lang="ts" setup>
     const props = defineProps({
         title: String,
-        response: String
     })
+
+    const response = ref(null)
 </script>
 <template>
     <div class="flex justify-between items-center">
