@@ -8,6 +8,7 @@ export default defineNuxtConfig({
         height: '5px'
     },
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+    plugins: ['@/plugins/chart.js'],
     tailwindcss: {
         cssPath: '~/assets/css/tailwind.css',
         configPath: 'tailwind.config.js',
