@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  nuxt:
+    build:
+      context: .
+    image: molory-admin
+    container_name: molory-admin
+    command: yarn start
+    # volumes:
+    # - .:/app
+    # - /app/node_modules
+    # ports:
+    #   - "3000:3000"
