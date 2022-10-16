@@ -19,10 +19,10 @@ export default defineNuxtConfig({
         classSuffix: ''
     },
     publicRuntimeConfig: {
-        BASE_URL: process.env.BASE_URL,
+        BASE_URL: 'https://molory.xyz/backend/api',
     },
     privateRuntimeConfig: {
-        BASE_URL: process.env.BASE_URL,
+        BASE_URL: 'https://molory.xyz/backend/api',
     },
    
 })
