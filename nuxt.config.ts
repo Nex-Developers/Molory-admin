@@ -8,7 +8,10 @@ export default defineNuxtConfig({
         height: '5px'
     },
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
-    plugins: ['@/plugins/chart.js'],
+    // plugins: ['@/plugins/utils.ts','@/plugins/config.ts', '@/plugins/LineChart.ts', '@/plugins/BarChart.ts' ],
+    build: {
+        transpile: ['chart.js']
+    },
     tailwindcss: {
         cssPath: '~/assets/css/tailwind.css',
         configPath: 'tailwind.config.js',
@@ -25,5 +28,5 @@ export default defineNuxtConfig({
     privateRuntimeConfig: {
         BASE_URL: 'https://molory.xyz/backend/api',
     },
-   
+
 })

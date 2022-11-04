@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { IUser } from "~~/types/IUser";
-
+// import * as chartConfigs from "@/components/Charts/config.js";
+// import config from "@/config.js";
 definePageMeta({
   middleware: "auth",
   layout: "private",
@@ -16,20 +17,32 @@ const dataTableHeaders = [
 ];
 const users = useState<IUser[]>("users");
 getUsers();
-const chartData = computed(() => {
-  return {
-    labels: [1, 2, 3, 4, 5],
-    datasets: [
-      {
-        label: "",
-        data: [2, 1, 16, 3, 2],
-        backgroundColor: "rgba(20, 255, 0, 0.3)",
-        borderColor: "rgba(100, 255, 0, 1)",
-        borderWidth: 2,
-      },
-    ],
-  };
-});
+// const purpleLineChart = {
+//   extraOptions: chartConfigs.purpleChartOptions,
+//   chartData: {
+//     labels: ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+//     datasets: [
+//       {
+//         label: "Data",
+//         fill: true,
+//         borderColor: config.colors.primary,
+//         borderWidth: 2,
+//         borderDash: [],
+//         borderDashOffset: 0.0,
+//         pointBackgroundColor: config.colors.primary,
+//         pointBorderColor: "rgba(255,255,255,0)",
+//         pointHoverBackgroundColor: config.colors.primary,
+//         pointBorderWidth: 20,
+//         pointHoverRadius: 4,
+//         pointHoverBorderWidth: 15,
+//         pointRadius: 4,
+//         data: [80, 100, 70, 80, 120, 80],
+//       },
+//     ],
+//   },
+//   gradientColors: config.colors.primaryGradient,
+//   gradientStops: [1, 0.2, 0],
+// };
 </script>
 <template>
   <NuxtLayout>
@@ -53,7 +66,16 @@ const chartData = computed(() => {
         </div>
         <!-- stats -->
         <div class="w-5/12 h-96 bg-white shadow-md">
-          <BarChart :data="chartData" />
+          <!-- <ChartsLineChart
+            style="height: 100%"
+            id ="chartId"
+            chartId='my-chart'
+            :chart-data="purpleLineChart.chartData"
+            :gradient-colors="purpleLineChart.gradientColors"
+            :gradient-stops="purpleLineChart.gradientStops"
+            :extra-options="purpleLineChart.extraOptions"
+          >
+          </ChartsLineChart> -->
         </div>
       </div>
     </div>
