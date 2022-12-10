@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn add \
+RUN yarn install \
   --prefer-offline \
   --frozen-lockfile \
   --non-interactive \
@@ -12,8 +12,7 @@ RUN yarn add \
 
 RUN yarn build
 
-RUN rm -rf node_modules && \
-  NODE_ENV=production yarn add \
+RUN NODE_ENV=production yarn install \
   --prefer-offline \
   --pure-lockfile \
   --non-interactive \
