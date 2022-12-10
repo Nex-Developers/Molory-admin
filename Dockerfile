@@ -4,14 +4,20 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install \
+RUN yarn add \
   --prefer-offline \
   --frozen-lockfile \
   --non-interactive \
+  --production=false
 
 RUN yarn build
 
-RUN rm -rf node_modules && NODE_ENV=production
+RUN rm -rf node_modules && \
+  NODE_ENV=production yarn add \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=true
 
 FROM node:lts
 
