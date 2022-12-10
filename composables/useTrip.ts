@@ -23,10 +23,21 @@ export async function getTrips() {
 
 
 export async function getTrip(id: number) {
-    showLoader(true, 'Loading')
-    if (!useState<ITrip[]>('trips').value) await getTrips()
-    showLoader(false)
-    return  ref(useState<ITrip[]>('trips').value.find(item => item.id === id))
+    const config = useRuntimeConfig()
+    try {
+        showLoader(true, 'Loading')
+        const headers = {
+            Authorization: 'Bearer ' + useState<string>('auth_token').value,
+            'Content-Type': 'Application/json'
+        }
+        const { data } = await $fetch<any>(`${config.BASE_URL}/trip/${id}`, { method: 'GET', headers })
+        console.log(data)
+        showLoader(false)
+        return data
+    } catch (err) {
+        console.log(err.message)
+        showLoader(false)
+    }
 }
 
 export async function updateTrip(body: any) {

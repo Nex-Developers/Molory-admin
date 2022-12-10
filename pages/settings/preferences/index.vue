@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { IPreference } from "~~/types";
+import { IQuestion } from "~~/types";
 
 definePageMeta({
   title: "Preferences",
@@ -7,17 +7,21 @@ definePageMeta({
   layout: "private",
 });
 
-const preferences = useState<IPreference[]>("preferences");
+const questions = useState<IQuestion[]>("questions");
 
-getPreferences();
+getQuestions();
 const rightSidePanel = ref();
 
-const onAddPreference = async (body) => {
-  await addPreference(body);
+const onAddQuestion= async (body) => {
+  await addQuestion(body);
   rightSidePanel.value.onClose();
 };
-const onEditPreference = (body) => updatePreference(body);
-const onDeletePreference = (id) => deletePreference({ id });
+const onAddAnswer = async ({ questionId, value }) => {
+  await addAnswer({questionId, value})
+}
+const onEditQuestion = (body) => updateQuestion(body);
+const onEditAnswer = ({id, value}) => updateAnswer({id, value});
+const onDeleteQuestion = (id) => deleteQuestion({ id });
 </script>
 <template>
   <NuxtLayout>
@@ -25,22 +29,24 @@ const onDeletePreference = (id) => deletePreference({ id });
       <!-- page title -->
       <Pagetitle title="Settings/Preferences" />
       <!-- stats card -->
-      <div class="w-full mt-6 grid grid-cols-3 justify-center gap-2">
+      <div class="w-full mt-6 grid grid-cols-2 justify-center gap-2">
         <PreferenceItem
-          v-for="preference of preferences"
-          :key="preference.id"
-          :id="preference.id"
-          :question="preference.question"
-          :answer="preference.answer"
+          v-for="question of questions"
+          :key="question.id"
+          :id="question.id"
+          :question="question.value"
+          :answers="question.answers"
           :edit="true"
           :deleteMode="true"
-          @onValidate="onEditPreference"
+          @onValidate="onEditQuestion"
+          @onAddAnswer="onAddAnswer"
+          @onEditAnswer="onEditAnswer"
         />
       </div>
     </div>
     <RightSidePanel title="Add Preference" ref="rightSidePanel">
       <PreferenceForm
-        @onValidate="onAddPreference"
+        @onValidate="onAddQuestion"
       />
     </RightSidePanel>
   </NuxtLayout>

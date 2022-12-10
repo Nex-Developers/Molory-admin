@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="h-screen bg-indigo-500 overflow-hidden">
+  <div class="h-screen overflow-hidden">
     <Navbar />
     <div class="w-full h-calc flex">
       <Sidebar  />

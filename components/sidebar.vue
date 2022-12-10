@@ -125,16 +125,16 @@ onMounted(() => {
             />
           </svg>
         </button>
-        <div class="absolute w-30 shadow-lg px-2 bg-white" v-if="displayMenu">
+        <div class="absolute w-30 z-50 shadow-lg px-2 bg-white" v-if="displayMenu">
           <NuxtLink to="/settings/preferences"
             ><div class="p-1">Preferences</div></NuxtLink
           >
           <NuxtLink to="/settings/vehicle-types"
             ><div class="p-1">Vehicles</div></NuxtLink
           >
-          <NuxtLink to="/settings/pricings"
+          <!-- <NuxtLink to="/settings/pricings"
             ><div class="p-1">Pricings</div></NuxtLink
-          >
+          > -->
         </div>
       </div>
       

@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 .h-calc {
-  height: calc(100% - 5rem) !important;
-}
+    height: calc(100% - 5rem) !important;
+  }
+  

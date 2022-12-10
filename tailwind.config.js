@@ -2,14 +2,15 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    "./assets/**/*.css",
-    "./components/*.{vue,js}",
-    "./components/**/*.{vue,js}",
-    "./pages/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "./*.{vue,js,ts}",
-    "./nuxt.config.{js,ts}",
+    `./components/**/*.{vue,js,ts}`,
+    `./layouts/**/*.vue`,
+    `./pages/**/*.vue`,
+    `./composables/**/*.{js,ts}`,
+    `./plugins/**/*.{js,ts}`,
+    `./App.{js,ts,vue}`,
+    `./app.{js,ts,vue}`,
+    `./Error.{js,ts,vue}`,
+    `./error.{js,ts,vue}`
   ],
   theme: {
     extend: {
@@ -17,7 +18,7 @@ module.exports = {
         primary: "#FF1E00",
         secondary: "#001317",
         tertiary: "#FFB400",
-        dark: "",
+        dark: "#000",
         light: "#FFFFFF",
         medium: "#F8F8F8",
         info: "#1132ff",
@@ -28,4 +29,5 @@ module.exports = {
     },
   },
   plugins: [],
+
 }

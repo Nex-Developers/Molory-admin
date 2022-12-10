@@ -1,3 +1,5 @@
+import { IQuestion } from './IQuestion';
+import { IAnswer } from './IAnswer';
 import { IWithdrawal } from './IWithdrawal';
 import { IPayment } from './IPayment';
 import { IPreference } from './IPreference';
@@ -14,5 +16,7 @@ export {
     IPricing,
     IPreference,
     IPayment,
-    IWithdrawal
+    IWithdrawal,
+    IAnswer,
+    IQuestion
 }

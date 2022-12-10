@@ -1,12 +1,10 @@
 <script lang="ts" setup>
 const form = ref({
-  question: null,
-  answer: null,
+  value: null,
 });
 
 const onReset = () => {
-  form.value.question = null;
-  form.value.answer = null;
+  form.value.value = null;
 };
 </script>
     
@@ -18,16 +16,7 @@ const onReset = () => {
         <textarea
           placeholder="Enter A Question"
           class="w-full border p-2 rounded text-lg"
-          v-model="form.question"
-          rows="2"
-        ></textarea>
-      </div>
-
-      <div class="p-2">
-        <textarea
-          class="w-full p-2 border rounded text-lg"
-          v-model="form.answer"
-          placeholder="Enter the answer"
+          v-model="form.value"
           rows="2"
         ></textarea>
       </div>

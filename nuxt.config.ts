@@ -1,32 +1,24 @@
-import { defineNuxtConfig } from 'nuxt'
+// https://nuxt.com/docs/api/configuration/nuxt-config
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     ssr: false,
-    loading: {
-        color: 'blue',
-        height: '5px'
-    },
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
-    // plugins: ['@/plugins/utils.ts','@/plugins/config.ts', '@/plugins/LineChart.ts', '@/plugins/BarChart.ts' ],
     build: {
-        transpile: ['chart.js']
+        transpile: ['chart.js'],
     },
-    tailwindcss: {
-        cssPath: '~/assets/css/tailwind.css',
-        configPath: 'tailwind.config.js',
-        exposeConfig: false,
-        injectPosition: 0,
-        viewer: true,
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
     },
-    colorMode: {
-        classSuffix: ''
-    },
-    publicRuntimeConfig: {
-        BASE_URL: 'https://molory.xyz/backend/api',
-    },
-    privateRuntimeConfig: {
-        BASE_URL: 'https://molory.xyz/backend/api',
+    css: [
+        '@/assets/css/main.css',
+    ],
+    runtimeConfig: {
+        public: {
+            BASE_URL: 'http://localhost/molory-backend/api',
+        }
     },
 
 })

@@ -44,7 +44,7 @@ const onCancel = () => {
     <div class="image overflow-hidden">
       <img
         class="aspect-square w-full mx-auto"
-        :src="data.avatar || 'https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg'"
+        :src="data.avatar || '/img/user.jpeg'"
         alt=""
       />
     </div>

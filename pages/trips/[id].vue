@@ -34,7 +34,9 @@
               </div>
 
               <div class="bg-white p-3 shadow-sm rounded-sm">
-                <span>{{ trip.seats - trip.remainingSeats}}/{{trip.seats}}</span>
+                <span
+                  >{{ trip.seats - trip.remainingSeats }}/{{ trip.seats }}</span
+                >
                 <!-- icon users -->
               </div>
             </div>
@@ -172,24 +174,62 @@
                     </span>
                     <span class="tracking-wide">Travelers</span>
                   </div>
-                  <ul class="list-inside space-y-2">
-                    <!-- <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">Owner at Her Company Inc.</div>
-                      <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                    </li> -->
-                  </ul>
+                  <div>
+                    <div
+                      v-for="travel in travels"
+                      :key="travel.id"
+                      class="
+                        hover:bg-gray-200
+                        cursor-pointer
+                        bg-white
+                        shadow
+                        flex
+                        p-5
+                        items-center
+                        mb-5
+                        rounded-lg
+                      "
+                    >
+                      <!-- <div class="w-1/6 text-center"><input type="checkbox" v-model="contact.selected"></div> -->
+                      <div class="w-1/2">
+                        <div class="flex items-center">
+                          <img
+                            :src="travel.user.avatar || '/img/user.jpeg'"
+                            class="aspect-square w-8 rounded-full"
+                          />
+                          <div class="ml-4">
+                            <span class="capitalize block text-gray-800"
+                              >{{ travel.user.firstName }}
+                              {{ travel.user.lastName }}
+                            </span>
+                            <!-- <span class="text-sm block text-gray-600"
+                              >{{ travel.user.phoneNumber }}
+                            </span> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w-1/4">
+                        <span class="capitalize text-gray-600 text-sm">{{
+                          travel.user.phoneNumber
+                        }}</span>
+                      </div>
+                      <div class="w-1/2">
+                        <span class="capitalize text-gray-600 text-sm">{{
+                          travel.createdAt
+                        }}</span>
+                      </div>
+                      <div class="w-1/4">
+                        <span class="text-gray-600 text-sm">{{
+                          travel.seats
+                        }} seats</span>
+                      </div>
+                      <div class="w-1/4">
+                        <span class="text-gray-600 text-sm">{{
+                          travel.status
+                        }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <!-- End of Experience and education grid -->
@@ -209,4 +249,7 @@ definePageMeta({
 });
 const route = useRoute();
 const trip = await getTrip(+route.params.id);
+let travels = [];
+trip?.routes.forEach((route) => (travels = travels.concat(route.travels)));
+console.log(travels);
 </script>
