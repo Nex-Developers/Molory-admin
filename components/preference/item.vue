@@ -238,7 +238,7 @@ const onStopEditing = () => (editMode.value = false);
             justify-between
           "
         >
-          <p>{{ answer.value }}</p>
+          <p>{{ answer.index + 1}} - {{ answer.value }}</p>
           <div class="flex">
             <button
               @click="answer.editMode = true"
