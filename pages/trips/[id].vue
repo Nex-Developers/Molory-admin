@@ -67,8 +67,6 @@
                 <span class="tracking-wide">Routes</span>
               </div>
               <div
-                v-for="route in trip.routes"
-                :key="route.id"
                 class="
                   grid grid-cols-3
                   items-center
@@ -79,21 +77,21 @@
                 "
               >
                 <div class="text-center">
-                  <span>{{ route.stops[0].address }}</span>
+                  <span>{{ trip.route.stops[0].address }}</span>
                 </div>
                 <div>
                   <div class="text-center text-sm text-primary">
-                    <span> {{ route.price }} F</span>
+                    <span> {{ trip.route.price }} F</span>
                   </div>
                   <hr class="w-full" />
                   <div class="text-center">
                     <span
-                      >{{ route.distance }} km ~ {{ route.duration }} h</span
+                      >{{ trip.route.distance }} km ~ {{ trip.route.duration }} h</span
                     >
                   </div>
                 </div>
                 <div class="text-center">
-                  <span>{{ route.stops[1].address }}</span>
+                  <span>{{ trip.route.stops[1].address }}</span>
                 </div>
               </div>
               <!-- <button
@@ -176,8 +174,8 @@
                   </div>
                   <div>
                     <div
-                      v-for="travel in travels"
-                      :key="travel.id"
+                      v-for="item in trip.passengers"
+                      :key="item.user.id"
                       class="
                         hover:bg-gray-200
                         cursor-pointer
@@ -194,38 +192,43 @@
                       <div class="w-1/2">
                         <div class="flex items-center">
                           <img
-                            :src="travel.user.avatar || '/img/user.jpeg'"
+                            :src="item.user.avatar || '/img/user.jpeg'"
                             class="aspect-square w-8 rounded-full"
                           />
                           <div class="ml-4">
                             <span class="capitalize block text-gray-800"
-                              >{{ travel.user.firstName }}
-                              {{ travel.user.lastName }}
+                              >{{ item.user.firstName }}
+                              {{ item.user.lastName }}
                             </span>
-                            <!-- <span class="text-sm block text-gray-600"
-                              >{{ travel.user.phoneNumber }}
-                            </span> -->
+                            <span class="text-sm block text-gray-600"
+                              >{{ item.user.phoneNumber }}
+                            </span>
                           </div>
                         </div>
                       </div>
-                      <div class="w-1/4">
+                      <!-- <div class="w-1/4">
                         <span class="capitalize text-gray-600 text-sm">{{
-                          travel.user.phoneNumber
+                          item.user.phoneNumber
                         }}</span>
-                      </div>
+                      </div> -->
                       <div class="w-1/2">
-                        <span class="capitalize text-gray-600 text-sm">{{
-                          travel.createdAt
-                        }}</span>
+                        <div class="flex justify-around items-center text-xs">
+                          <span>{{ item.travel.route.stops[0].address }}</span>
+                          <hr class="w-12">
+                          <span>{{ item.travel.route.stops[1].address }}</span>
+                        </div>
+                        <div class="capitalize text-gray-600 text-sm pt-2 text-center">{{
+                          item.travel.createdAt
+                        }}</div>
                       </div>
                       <div class="w-1/4">
                         <span class="text-gray-600 text-sm">{{
-                          travel.seats
+                          item.travel.seats
                         }} seats</span>
                       </div>
                       <div class="w-1/4">
                         <span class="text-gray-600 text-sm">{{
-                          travel.status
+                          item.travel.status
                         }}</span>
                       </div>
                     </div>
@@ -249,7 +252,5 @@ definePageMeta({
 });
 const route = useRoute();
 const trip = await getTrip(+route.params.id);
-let travels = [];
-trip?.routes.forEach((route) => (travels = travels.concat(route.travels)));
-console.log(travels);
+
 </script>

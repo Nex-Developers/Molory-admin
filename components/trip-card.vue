@@ -42,9 +42,9 @@ const props = defineProps({
         </div>
         <div>
           <h2 class="text-sm text-gray-400">
-            <!-- {{ data.vehicle.type }} {{ data.vehicle.color }} -->
+            {{ data.vehicle.type }} {{ data.vehicle.model }}
           </h2>
-          <!-- <span>{{ data.vehicle.numberPlate }}</span> -->
+          <span>{{ data.vehicle.numberPlate }}</span>
         </div>
       </div>
   </div>
@@ -61,7 +61,7 @@ const props = defineProps({
         </div>
         <div>
           <div class="text-center text-sm text-primary">
-            <span> {{ route.price }} F</span>
+            <span> {{ route.price + route.fees }} F</span>
           </div>
           <hr class="w-full" />
           <div class="text-center ">
