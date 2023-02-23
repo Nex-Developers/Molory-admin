@@ -10,15 +10,9 @@ definePageMeta({
 });
 
 let data = ref([]);
-const dataTableHeaders = [
-  { label: "Avatar", field: "avatar", type: "image" },
-  { label: "First Name", field: "firstName" },
-  { label: "Last Name", field: "lastName" },
-  { label: "Phone Number", field: "phoneNumber" },
-  { label: "Role", field: "role" },
-];
-const users = useState<IUser[]>("users");
-getUsers();
+
+const travels = useState<any[]>("travels");
+getTravels();
 // const purpleLineChart = {
 //   extraOptions: chartConfigs.purpleChartOptions,
 //   chartData: {
@@ -53,20 +47,10 @@ getUsers();
       <Pagetitle title="Dashboard" />
       <!-- stats card -->
 
-      <div class="flex flex-wrap ">
+      <div class="flex flex-wrap">
         <div class="mt-4 w-full lg:w-6/12 xl:w-3/12 px-5 mb-4">
           <div
-            class="
-              relative
-              flex flex-col
-              min-w-0
-              break-words
-              bg-white
-              rounded
-              mb-3
-              xl:mb-0
-              shadow-lg
-            "
+            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-3 xl:mb-0 shadow-lg"
           >
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
@@ -80,19 +64,7 @@ getUsers();
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
                   <div
-                    class="
-                      text-white
-                      p-3
-                      text-center
-                      inline-flex
-                      items-center
-                      justify-center
-                      w-12
-                      h-12
-                      shadow-lg
-                      rounded-full
-                      bg-pink-500
-                    "
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -120,17 +92,7 @@ getUsers();
 
         <div class="mt-4 w-full lg:w-6/12 xl:w-3/12 px-5">
           <div
-            class="
-              relative
-              flex flex-col
-              min-w-0
-              break-words
-              bg-white
-              rounded
-              mb-4
-              xl:mb-0
-              shadow-lg
-            "
+            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-4 xl:mb-0 shadow-lg"
           >
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
@@ -144,19 +106,7 @@ getUsers();
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
                   <div
-                    class="
-                      text-white
-                      p-3
-                      text-center
-                      inline-flex
-                      items-center
-                      justify-center
-                      w-12
-                      h-12
-                      shadow-lg
-                      rounded-full
-                      bg-primary
-                    "
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-primary"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -183,17 +133,7 @@ getUsers();
 
         <div class="mt-4 w-full lg:w-6/12 xl:w-3/12 px-5">
           <div
-            class="
-              relative
-              flex flex-col
-              min-w-0
-              break-words
-              bg-white
-              rounded
-              mb-6
-              xl:mb-0
-              shadow-lg
-            "
+            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
           >
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
@@ -207,20 +147,7 @@ getUsers();
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
                   <div
-                    class="
-                      text-white
-                      bg-tertiary
-                      p-3
-                      text-center
-                      inline-flex
-                      items-center
-                      justify-center
-                      w-12
-                      h-12
-                      shadow-lg
-                      rounded-full
-                      bg-lightBlue-500
-                    "
+                    class="text-white bg-tertiary p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-lightBlue-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -247,17 +174,7 @@ getUsers();
 
         <div class="mt-4 w-full lg:w-6/12 xl:w-3/12 px-5">
           <div
-            class="
-              relative
-              flex flex-col
-              min-w-0
-              break-words
-              bg-white
-              rounded
-              mb-6
-              xl:mb-0
-              shadow-lg
-            "
+            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
           >
             <div class="flex-auto p-4">
               <div class="flex flex-wrap">
@@ -271,19 +188,7 @@ getUsers();
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
                   <div
-                    class="
-                      text-white
-                      p-3
-                      text-center
-                      inline-flex
-                      items-center
-                      justify-center
-                      w-12
-                      h-12
-                      shadow-lg
-                      rounded-full
-                      bg-emerald-500
-                    "
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-emerald-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -315,91 +220,97 @@ getUsers();
         <div class="w-7/12">
           <!-- <Table :headers="dataTableHeaders" :data="data" /> -->
           <div id="app" class="">
-          <div class="container mx-auto">
-            <div class="py-4">
-              <div class="flex items-center px-5 py-2">
-                <!-- <span class="w-1/6 text-center">          
-          <input type="checkbox" @change="toggleSelect">
-        </span> -->
-                <span class="w-1/2">
-                  <span class="text-xs uppercase text-gray-600 font-bold"
-                    >User Info</span
-                  >
-                </span>
-                <span class="w-1/4">
-                  <span class="text-xs uppercase text-gray-600 font-bold"
-                    >Gender</span
-                  >
-                </span>
-                <span class="w-1/4">
-                  <span class="text-xs uppercase text-gray-600 font-bold"
-                    >Birth Date</span
-                  >
-                </span>
-                <span class="w-1/4">
-                  <span class="text-xs uppercase text-gray-600 font-bold"
-                    >Role</span
-                  >
-                </span>
-                <span class="w-1/4">
-                  <span class="text-xs uppercase text-gray-600 font-bold"
-                    >Created At</span
-                  >
-                </span>
-              </div>
+            <div class="container mx-auto">
+              <div class="py-4">
+                <!-- <div class="flex items-center px-5 py-2">
+        
+                  <span class="w-1/2">
+                    <span class="text-xs uppercase text-gray-600 font-bold"
+                      >User Info</span
+                    >
+                  </span>
+                  <span class="w-1/4">
+                    <span class="text-xs uppercase text-gray-600 font-bold"
+                      >Places</span
+                    >
+                  </span>
+                  <span class="w-1/4">
+                    <span class="text-xs uppercase text-gray-600 font-bold"
+                      >Trajet</span
+                    >
+                  </span>
+                  <span class="w-1/4">
+                    <span class="text-xs uppercase text-gray-600 font-bold"
+                      >Date départ</span
+                    >
+                  </span>
+                  <span class="w-1/4">
+                    <span class="text-xs uppercase text-gray-600 font-bold"
+                      >Ajouté le</span
+                    >
+                  </span>
+                </div> -->
 
-              <div
-                v-for="(contact, key) in users"
-                :key="key"
-                class="
-                  hover:bg-gray-200
-                  cursor-pointer
-                  bg-white
-                  shadow
-                  flex
-                  p-5
-                  items-center
-                  mb-5
-                  rounded-lg
-                  text-xs
-                "
-              >
-                <!-- <div class="w-1/6 text-center"><input type="checkbox" v-model="contact.selected"></div> -->
-                <div class="w-1/2">
-                  <div class="flex items-center">
-                    <img :src="contact.avatar || 'img/user.jpeg' "  class=" aspect-square w-8 rounded-full" />
-                    <div class="ml-4">
-                      <span class="capitalize block text-gray-800"
-                        >{{ contact.firstName }} {{ contact.lastName }}</span
-                      >
-                      <span class=" block text-gray-600"
-                        >{{ contact.email || contact.phoneNumber }}</span
-                      >
+                <div
+                  v-for="(travel, key) in travels"
+                  :key="key"
+                  class="hover:bg-gray-200 cursor-pointer bg-white shadow flex p-5 items-center mb-5 rounded-lg text-xs"
+                >
+                  <!-- <div class="w-1/6 text-center"><input type="checkbox" v-model="contact.selected"></div> -->
+                  <div class="w-1/2">
+                    <div class="flex items-center">
+                      <img
+                        :src="travel?.user?.avatar || 'img/user.jpeg'"
+                        class="aspect-square w-8 rounded-full"
+                      />
+                      <div class="ml-4">
+                        <span class="capitalize block text-gray-800"
+                          >{{ travel?.user?.firstName }}
+                          {{ travel?.user?.lastName }}</span
+                        >
+                        <span class="block text-gray-600">{{
+                          travel?.user?.email || travel.user?.phoneNumber
+                        }}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="w-1/4">
-                  <span class="capitalize text-gray-600 ">{{
-                    contact.gender
-                  }}</span>
-                </div>
-                <div class="w-1/4">
-                  <span class="capitalize text-gray-600 ">{{
-                    contact.birthDay
-                  }}</span>
-                </div>
-                <div class="w-1/4">
-                  <span class="text-gray-600">{{ contact.role }}</span>
-                </div>
-                <div class="w-1/4">
-                  <span class="text-gray-600">{{
-                    contact.createdAt
-                  }}</span>
+                  <div class="w-1/4">
+                    <span class=" text-gray-600">{{
+                      travel.seats
+                    }} siège<span v-if="travel.seats > 1">s</span> </span>
+                  </div>
+
+                  <div class="w-1/4">
+                    <span class="text-gray-600">{{
+                      travel.departureAddress + " - " + travel.arrivalAddress
+                    }}</span>
+                  </div>
+                  <div class="w-1/4">
+                    <span class="capitalize text-gray-600">{{
+                      travel.departureDate + " " + travel.departureTime
+                    }}</span>
+                  </div>
+                  <div class="w-1/4">
+                    <span class="text-gray-600">{{ travel.createdAt }}</span>
+                  </div>
+                  <div class="">
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-blue-900" v-if="travel.status === 5 || travel.status === 4"
+                      >En attente</span
+                    >
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-purple-900" v-else-if="travel.status === 3 || travel.status === 2"
+                      >En route</span
+                    >
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-green-900" v-if="travel.status === 1"
+                      >Arrivé</span
+                    >
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-red-700" v-if="travel.status === 0"
+                      >Annulé</span
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
         <!-- stats -->
         <div class="w-5/12">

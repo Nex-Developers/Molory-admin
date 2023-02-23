@@ -1,22 +1,19 @@
-import { IPayment } from "~~/types"
 
-
-
-export async function  getPayments() {
+export async function getTravels() {
     const config = useRuntimeConfig()
-    const payments = useState<IPayment[]>('payments')
+    const travels = useState<any[]>('travels')
     try {
         showLoader(true, 'Loading')
         const headers = {
             Authorization: 'Bearer ' + useState<string>('auth_token').value,
             'Content-Type': 'Application/json'
         }
-        const { data } = await $fetch<any>(`${config.BASE_URL}/payment`, { headers })
-        // console.log(data)
-        payments.value = data
+        const { data } = await $fetch<any>(`${config.BASE_URL}/travel`, { method: 'GET', headers })
+        console.log(data)
+        useState<any[]>('travels').value = data
         showLoader(false)
         return data
-    } catch(err: any) {
+    } catch (err: any) {
         console.log(err.message)
         showLoader(false)
     }

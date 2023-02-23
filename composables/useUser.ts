@@ -37,7 +37,7 @@ export async function getUser(id: number) {
         console.log(data)
         showLoader(false)
         return data
-    } catch (err) {
+    } catch (err: any) {
         console.log(err.message)
         if(err.message.includes("403")) removeSessionToken()
         showLoader(false)

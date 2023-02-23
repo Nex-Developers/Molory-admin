@@ -10,7 +10,7 @@
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-if="data.length">
         <tr class="bg-gray-200 h-16 mx-5" v-for="(item, i) in data" :key="i" @click="details(item.id)">
           <!-- <td class="px-2 text-left">{{ i + 1 }}</td> -->
           <td v-for="(header, j) in headers" :key="j" class="text-left">
@@ -21,6 +21,9 @@
           </td>
         </tr>
       </tbody>
+      <div v-else class="w-full  h-full flex justify-center items-center">
+          <p class="text-red-600 text-center w-full h-full">Pas de donnée!</p>
+      </div>
     </table>
   </div>
 </template>
@@ -30,7 +33,7 @@ const props = defineProps({
   headers: Array,
   data: {
     type: Array,
-    required: true,
+    default: [],
   },
   details: Function
 });
