@@ -11,7 +11,7 @@ const pricings = useState<{ name: string; pricings: IPricing[]}[]>("pricings");
 getPricings()
 </script>
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto">
       <!-- page title -->
       <Pagetitle title="Settings/Pricings" />
@@ -23,5 +23,5 @@ getPricings()
       </div>
     </div>
    
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>

@@ -32,7 +32,7 @@ getUsers();
 </script>
 
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto relative">
       <!-- page title -->
       <Pagetitle title="Users" />
@@ -134,5 +134,5 @@ getUsers();
     <RightSidePanel title="Add Admin" ref="rightSidePanel">
       <UserForm @onValidate="onAddUser" :isLoading="isFormLoading" />
     </RightSidePanel>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>

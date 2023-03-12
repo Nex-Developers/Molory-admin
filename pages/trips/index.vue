@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto relative">
       <!-- page title -->
       <Pagetitle title="Trajets" />
@@ -16,7 +16,7 @@
       </div>
       <AlertsLoader v-if="isLoadingData" />
     </div>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>
 <script lang="ts" setup>
 import { ITrip } from "~~/types";

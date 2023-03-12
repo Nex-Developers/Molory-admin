@@ -24,7 +24,7 @@ const onEditAnswer = ({id, value}) => updateAnswer({id, value});
 const onDeleteQuestion = (id) => deleteQuestion({ id });
 </script>
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto">
       <!-- page title -->
       <Pagetitle title="Settings/Preferences" />
@@ -49,5 +49,5 @@ const onDeleteQuestion = (id) => deleteQuestion({ id });
         @onValidate="onAddQuestion"
       />
     </RightSidePanel>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>

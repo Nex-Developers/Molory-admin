@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto">
       <!-- page title -->
       <Pagetitle title="Settings/Vehicle Types" />
@@ -23,7 +23,7 @@
         @onValidate="onAddVehicleType"
       />
     </RightSidePanel>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>
 <script lang="ts" setup>
 import { IVehicleType } from "~~/types";

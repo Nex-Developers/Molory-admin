@@ -41,7 +41,7 @@ getTravels();
 // };
 </script>
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full overflow-y-auto bg-medium px-10 py-8">
       <!-- page title -->
       <Pagetitle title="Dashboard" />
@@ -323,5 +323,5 @@ getTravels();
         </div>
       </div>
     </div>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>

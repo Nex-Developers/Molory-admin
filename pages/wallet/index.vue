@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8">
       <!-- page title -->
       <Pagetitle title="Operations" />
@@ -148,7 +148,7 @@
         </div>
       </div>
     </div>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>
 <script lang="ts" setup>
 import { IPayment, IWithdrawal } from "~~/types";

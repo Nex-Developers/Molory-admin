@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto relative">
       <!-- page title -->
       <Pagetitle title="Documents" />
@@ -9,7 +9,7 @@
       </div>
       <AlertsLoader v-if="isLoadingData" />
     </div>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>
 <script lang="ts" setup>
 definePageMeta({

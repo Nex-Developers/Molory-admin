@@ -13,7 +13,7 @@ const isLoadingData = useState<boolean>("showLoader");
 </script>
 
 <template>
-  <NuxtLayout>
+  <!-- <NuxtLayout> -->
     <div class="w-full h-full bg-medium px-10 py-8 overflow-y-auto relative">
       <!-- page title -->
       <Pagetitle :title="'Users/' + user.lastName + ' ' + user.firstName" />
@@ -590,5 +590,5 @@ const isLoadingData = useState<boolean>("showLoader");
       </div>
       <AlertsLoader v-if="isLoadingData" />
     </div>
-  </NuxtLayout>
+  <!-- </NuxtLayout> -->
 </template>
