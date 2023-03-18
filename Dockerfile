@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install
+RUN npm install
 
-RUN yarn build
+RUN npm run build
 
 # RUN rm -rf node_modules && \
 #   NODE_ENV=production yarn add \
