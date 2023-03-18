@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             // BASE_URL: 'http://localhost/molory-backend/api',
-            BASE_URL: 'https://molory.xyz/backend/api',
+            BASE_URL: process.env.BASE_URL,
         }
     },
 
