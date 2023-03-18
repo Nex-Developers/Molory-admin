@@ -70,6 +70,7 @@ export async function registerWithEmail(
 
 export async function loginWithEmail(email: string, password: string) {
     const config = useRuntimeConfig()
+    console.log('base url',config.BASE_URL)
     try {
         const { data, token, message, statusCode, error } = await $fetch<{ token: string, statusCode: number, message: string, data: IUser, error?: string }>(`${config.BASE_URL}/auth/login`, { method: 'POST', body: { email: email, password: password } })
         if (error) {
