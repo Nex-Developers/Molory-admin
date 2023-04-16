@@ -1,1 +1,0 @@
-import{M as r,N as s}from"./entry.3decec21.js";import{u as a}from"./useAuth.7de355ae.js";const l=r(async u=>{let e,t;const o=([e,t]=s(()=>a()),e=await e,t(),e);if(o==null&&o==null)return"/login"});export{l as default};

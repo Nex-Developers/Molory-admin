@@ -1,1 +1,0 @@
-import{o as e,b as s,e as o,t as a}from"./entry.3decec21.js";const c={class:"sticky"},n={class:"text-secondary text-lg font-bold"},_={__name:"pagetitle",props:{title:String},setup(t){return(r,i)=>(e(),s("div",c,[o("h3",n,a(t.title),1)]))}};export{_};
