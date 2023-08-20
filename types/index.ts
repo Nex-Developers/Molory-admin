@@ -1,3 +1,4 @@
+import { IPromotion } from './IPromotion';
 import { IQuestion } from './IQuestion';
 import { IAnswer } from './IAnswer';
 import { IWithdrawal } from './IWithdrawal';
@@ -18,5 +19,6 @@ export {
     IPayment,
     IWithdrawal,
     IAnswer,
-    IQuestion
+    IQuestion,
+    IPromotion
 }
