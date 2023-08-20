@@ -11,7 +11,8 @@
     });
     
     const onOpen = () => {
-      window.open(props.path, "_blank");
+      const path = props.path?.replace('/uploads', '/download/uploads')
+      window.open(path, '_blank');
     };
     </script>
     
@@ -43,7 +44,7 @@
               <h3>{{ title }}</h3>
             </div>
             <div>
-              <button class="text-primary">View >></button>
+              <button class="text-primary">Voir >></button>
             </div>
           </div>
           <img class="w-96 h-full" v-else :src="path" :alt="title" />

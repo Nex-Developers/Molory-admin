@@ -18,7 +18,10 @@
             <!-- Stats tab -->
             <div class="grid grid-cols-4 gap-4">
               <div class="bg-white p-3 shadow-sm rounded-sm">
-                <span>En Attente</span>
+                <span v-if="trip.status === 0" class="text-danger">Annulé</span>
+                <span v-else-if="trip.status === 1" class="text-success">Arrivé</span>
+                <span v-else-if="trip.status === 2" class="text-primary" >En cours</span>
+                <span v-else-if="trip.status === 3" class="text-secondary" >En attente</span>
               </div>
 
               <div class="bg-white p-3 shadow-sm rounded-sm">
@@ -29,7 +32,7 @@
               </div>
 
               <div class="bg-white p-3 shadow-sm rounded-sm">
-                <span>5000 F CFA</span>
+                <span>{{ amount  }} F <br> gagné</span>
                 <!-- icon dollar -->
               </div>
 
@@ -81,7 +84,7 @@
                 </div>
                 <div>
                   <div class="text-center text-sm text-primary">
-                    <span> {{ trip.route.price }} F</span>
+                    <span> {{ trip.route.price + trip.route.commission }} F</span>
                   </div>
                   <hr class="w-full" />
                   <div class="text-center">
@@ -252,5 +255,7 @@ definePageMeta({
 });
 const route = useRoute();
 const trip = await getTrip(+route.params.id);
+console.log(trip)
 const user = await getUser(trip.user.id);
+const amount = trip.passengers.reduce((a: any,b: any) => a + (b.travel.route.price), 0)
 </script>

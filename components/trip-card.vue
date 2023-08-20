@@ -61,7 +61,7 @@ const props = defineProps({
         </div>
         <div>
           <div class="text-center text-sm text-primary">
-            <span> {{ route.price + route.fees }} F</span>
+            <span> {{ route.price + route.commission }} F</span>
           </div>
           <hr class="w-full" />
           <div class="text-center ">
