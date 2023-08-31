@@ -10,11 +10,11 @@
     "ofetch": "1.0.1",
     "hookable": "5.4.2",
     "unstorage": "1.1.5",
-    "radix3": "1.0.0",
     "defu": "6.1.2",
+    "radix3": "1.0.0",
     "pathe": "1.1.0",
-    "ohash": "1.0.0",
     "ufo": "1.1.0",
+    "ohash": "1.0.0",
     "scule": "1.0.0",
     "vue-bundle-renderer": "1.0.2",
     "vue": "3.2.47",
@@ -32,7 +32,7 @@
     "@vue/compiler-core": "3.2.47",
     "@vue/runtime-core": "3.2.47",
     "@vue/reactivity": "3.2.47",
-    "estree-walker": "2.0.2",
-    "@babel/parser": "7.20.15"
+    "@babel/parser": "7.20.15",
+    "estree-walker": "2.0.2"
   }
 }

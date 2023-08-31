@@ -12,7 +12,11 @@ definePageMeta({
 let data = ref([]);
 
 const travels = useState<any[]>("travels");
+const stats = useState<any>("stats");
 getTravels();
+getStats();
+console.log(stats)
+
 // const purpleLineChart = {
 //   extraOptions: chartConfigs.purpleChartOptions,
 //   chartData: {
@@ -56,10 +60,10 @@ getTravels();
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                    Trips
+                    Trajets publiés
                   </h5>
                   <span class="font-semibold text-xl text-blueGray-700"
-                    >334,100</span
+                    >{{ stats?.tripCount }}</span
                   >
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
@@ -80,12 +84,12 @@ getTravels();
                   </div>
                 </div>
               </div>
-              <p class="text-sm text-blueGray-400 mt-4">
+              <!-- <p class="text-sm text-blueGray-400 mt-4">
                 <span class="text-emerald-500 mr-2"
                   ><i class="fas fa-arrow-up"></i> 2,99%
                 </span>
                 <span class="whitespace-nowrap"> Since last month </span>
-              </p>
+              </p> -->
             </div>
           </div>
         </div>
@@ -98,10 +102,10 @@ getTravels();
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                    Users
+                    Utilisateurs
                   </h5>
                   <span class="font-semibold text-xl text-blueGray-700"
-                    >2,999</span
+                    >{{ stats?.userCount }}</span
                   >
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
@@ -121,12 +125,12 @@ getTravels();
                   </div>
                 </div>
               </div>
-              <p class="text-sm text-blueGray-400 mt-4">
+              <!-- <p class="text-sm text-blueGray-400 mt-4">
                 <span class="text-red-500 mr-2"
                   ><i class="fas fa-arrow-down"></i> 4,01%</span
                 >
                 <span class="whitespace-nowrap"> Since last week </span>
-              </p>
+              </p> -->
             </div>
           </div>
         </div>
@@ -139,10 +143,10 @@ getTravels();
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                    Bookings
+                    Réservations
                   </h5>
                   <span class="font-semibold text-xl text-blueGray-700"
-                    >901</span
+                    >{{ stats?.travelCount }}</span
                   >
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
@@ -162,12 +166,12 @@ getTravels();
                   </div>
                 </div>
               </div>
-              <p class="text-sm text-blueGray-400 mt-4">
+              <!-- <p class="text-sm text-blueGray-400 mt-4">
                 <span class="text-red-500 mr-2"
                   ><i class="fas fa-arrow-down"></i> 1,25%
                 </span>
                 <span class="whitespace-nowrap"> Since yesterday </span>
-              </p>
+              </p> -->
             </div>
           </div>
         </div>
@@ -180,10 +184,10 @@ getTravels();
               <div class="flex flex-wrap">
                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                    Incomes
+                    Revenus
                   </h5>
                   <span class="font-semibold text-xl text-blueGray-700"
-                    >51 000
+                    >{{  stats?.incomes || 0 }}
                   </span>
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
@@ -203,12 +207,12 @@ getTravels();
                   </div>
                 </div>
               </div>
-              <p class="text-sm text-blueGray-400 mt-4">
+              <!-- <p class="text-sm text-blueGray-400 mt-4">
                 <span class="text-emerald-500 mr-2"
                   ><i class="fas fa-arrow-up"></i> 12%
                 </span>
                 <span class="whitespace-nowrap"> Since last mounth </span>
-              </p>
+              </p> -->
             </div>
           </div>
         </div>
@@ -217,7 +221,7 @@ getTravels();
       <!-- infos list -->
       <div class="mt-6 flex gap-6 w-full">
         <!-- list -->
-        <div class="w-7/12">
+        <div class="w-full">
           <!-- <Table :headers="dataTableHeaders" :data="data" /> -->
           <div id="app" class="">
             <div class="container mx-auto">
@@ -312,15 +316,15 @@ getTravels();
             </div>
           </div>
         </div>
-        <!-- stats -->
-        <div class="w-5/12">
-          <div class="w-full bg-white shadow-md mb-5">
+        <!-- stats? -->
+        <!-- <div class="w-5/12"> -->
+          <!-- <div class="w-full bg-white shadow-md mb-5">
             <PieChart />
-          </div>
-          <div class="w-full bg-white shadow-md">
+          </div> -->
+          <!-- <div class="w-full bg-white shadow-md">
             <BarChart />
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </div>
     </div>
   <!-- </NuxtLayout> -->

@@ -9,6 +9,7 @@ import { IVehicleType } from './IVehicleType';
 import { IUser } from './IUser';
 import { ISession } from './ISession';
 import { ITrip } from './ITrip';
+import { ITransaction } from './ITransaction';
 export {
     ISession,
     IUser,
@@ -20,5 +21,6 @@ export {
     IWithdrawal,
     IAnswer,
     IQuestion,
-    IPromotion
+    IPromotion,
+    ITransaction
 }

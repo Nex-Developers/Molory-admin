@@ -7,7 +7,8 @@
     const isDocument = computed(() => {
       const imagesExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "svg"];
       const extension = props.path?.split(".").pop();
-      return !imagesExtensions.includes(extension);
+      if(!extension) return false;
+      return !imagesExtensions.includes(extension?.toLowerCase());
     });
     
     const onOpen = () => {
