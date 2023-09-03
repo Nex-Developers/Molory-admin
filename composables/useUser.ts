@@ -11,7 +11,7 @@ export async function getUsers() {
             'Content-Type': 'Application/json'
         }
         const { data } = await $fetch<any>(`${config.BASE_URL}/user`, { method: 'GET', headers })
-        console.log(data)
+        // console.log(data)
         useState<IUser[]>('users').value = data
         showLoader(false)
         return data

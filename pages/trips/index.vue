@@ -27,13 +27,30 @@ definePageMeta({
   layout: "private",
 });
 
-const trips = useState<ITrip[]>("trips");
+
+const searchValue = useState<any>("searchValue");
+const trips = computed<any[]>(() => {
+  const data = useState<ITrip[]>("trips");
+  // console.log('travel', data.value)
+  if (!data.value) return [];
+  if (!data.value.length) return [];
+  if (!searchValue.value) return data.value;
+  const computedData = data.value.filter(
+    item => item?.user?.firstName?.toLowerCase().includes(searchValue.value?.toLowerCase())
+  || item?.user?.lastName?.toLowerCase().includes(searchValue.value?.toLowerCase())
+  || item?.vehicle?.numberPlate?.toLowerCase().includes(searchValue.value?.toLowerCase())
+
+  );
+  // console.log('computed', computedData)
+  return computedData;
+});
 const isLoadingData = useState<boolean>("showLoader");
 
 const details = (id) => {
   const router = useRouter();
   router.push("/trips/" + id);
 };
+
 
 getTrips();
 </script>

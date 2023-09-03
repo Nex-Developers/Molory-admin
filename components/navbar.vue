@@ -1,8 +1,19 @@
+
 <script lang="ts" setup>
+import { IUser } from "~~/types";
+
 const user = useState<IUser>("user");
-const load = () => {
-  showLoader(true, 'chargement')
+const seachValue = ref<string>('');
+const search = () => {
+  // showLoader(true, 'chargement')
+  // console.log(seachValue.value)
+  setSearchValue(seachValue.value)
 }
+
+const reset = () => {
+  if (!seachValue.value) setSearchValue('')
+}
+
 </script>
 
 
@@ -39,10 +50,12 @@ const load = () => {
         </div>
         <input
           type="search"
-          placeholder="Search for transaction, item,"
+          v-model="seachValue"
+          @keydown="reset"
+          placeholder="Rechercher transaction, utilisateurs,"
           class="p-2 bg-medium w-80 rounded-none"
         />
-        <button class="w-36 bg-primary text-light py-2" @click="load">Rechercher</button>
+        <button class="w-36 bg-primary disabled:opacity-30 text-light py-2" :disabled="!seachValue" @click="search">Rechercher</button>
       </div>
       <div class="flex">
         <div>

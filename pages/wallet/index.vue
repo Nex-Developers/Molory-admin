@@ -16,7 +16,7 @@
                     Entrées
                   </h5>
                   <span class="font-semibold text-xl text-blueGray-700"
-                    >{{ stats.payin }} FCFA</span
+                    >{{ stats?.payin }} FCFA</span
                   >
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
@@ -57,7 +57,7 @@
                     Sorties
                   </h5>
                   <span class="font-semibold text-xl text-blueGray-700"
-                    >{{ stats.payout }} FCFA</span
+                    >{{ stats?.payout }} FCFA</span
                   >
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
@@ -98,7 +98,7 @@
                     Revenus
                   </h5>
                   <span class="font-semibold text-xl text-blueGray-700"
-                    >{{ stats.payin - stats.payout }} FCFA
+                    >{{ (stats?.payin - stats?.payout) || 0 }} FCFA
                   </span>
                 </div>
                 <div class="relative w-auto pl-4 flex-initial">
@@ -196,7 +196,20 @@ const details = (id) => {
   const router = useRouter();
   router.push("/wallet/" + id);
 };
-const transactions = useState<ITransaction[]>("transactions");
+  const searchValue = useState<any>("searchValue");
+const transactions = computed<any[]>(() => {
+  const data = useState<ITransaction[]>("transactions");
+  // console.log('travel', data.value)
+  if (!data.value) return [];
+  if (!data.value.length) return [];
+  if (!searchValue.value) return data.value;
+  const computedData = data.value.filter(
+    item => item?.ref?.toLowerCase().includes(searchValue.value?.toLowerCase())
+  || item?.type?.toLowerCase().includes(searchValue.value?.toLowerCase())
+  );
+  // console.log('computed', computedData)
+  return computedData;
+});
 const stats = useState<any>("stats");
 const paymentsTableHeaders = [
   { label: "Avatar", field: "avatar", type: "image" },

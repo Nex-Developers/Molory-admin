@@ -11,11 +11,27 @@ definePageMeta({
 
 let data = ref([]);
 
-const travels = useState<any[]>("travels");
+const searchValue = useState<any>("searchValue");
+const travels = computed<any[]>(() => {
+  const data = useState<any[]>("travels");
+  // console.log('travel', data.value)
+  if (!data.value) return [];
+  if (!data.value.length) return [];
+  if (!searchValue.value) return data.value;
+  const computedData = data.value.filter(
+    item => item?.departureAddress?.toLowerCase().includes(searchValue.value?.toLowerCase())
+  || item?.arrivalAddress?.toLowerCase().includes(searchValue.value?.toLowerCase()) 
+  || item?.user?.firstName?.toLowerCase().includes(searchValue.value?.toLowerCase())
+  || item?.user?.lastName?.toLowerCase().includes(searchValue.value?.toLowerCase())
+  || item?.date.includes(searchValue.value)
+  );
+  // console.log('computed', computedData)
+  return computedData;
+});
 const stats = useState<any>("stats");
 getTravels();
 getStats();
-console.log(stats)
+// console.log(stats)
 
 // const purpleLineChart = {
 //   extraOptions: chartConfigs.purpleChartOptions,
@@ -273,41 +289,41 @@ console.log(stats)
                           {{ travel?.user?.lastName }}</span
                         >
                         <span class="block text-gray-600">{{
-                          travel?.user?.email || travel.user?.phoneNumber
+                          travel?.user?.email || travel?.user?.phoneNumber
                         }}</span>
                       </div>
                     </div>
                   </div>
                   <div class="w-1/4">
                     <span class=" text-gray-600">{{
-                      travel.seats
-                    }} siège<span v-if="travel.seats > 1">s</span> </span>
+                      travel?.seats
+                    }} siège<span v-if="travel?.seats > 1">s</span> </span>
                   </div>
 
                   <div class="w-1/4">
                     <span class="text-gray-600">{{
-                      travel.departureAddress + " - " + travel.arrivalAddress
+                      travel?.departureAddress + " - " + travel?.arrivalAddress
                     }}</span>
                   </div>
                   <div class="w-1/4">
                     <span class="capitalize text-gray-600">{{
-                      travel.departureDate + " " + travel.departureTime
+                      travel?.departureDate + " " + travel?.departureTime
                     }}</span>
                   </div>
                   <div class="w-1/4">
-                    <span class="text-gray-600">{{ travel.createdAt }}</span>
+                    <span class="text-gray-600">{{ travel?.createdAt }}</span>
                   </div>
                   <div class="">
-                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-blue-900" v-if="travel.status === 5 || travel.status === 4"
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-blue-900" v-if="travel?.status === 5 || travel?.status === 4"
                       >En attente</span
                     >
-                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-purple-900" v-else-if="travel.status === 3 || travel.status === 2"
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-purple-900" v-else-if="travel?.status === 3 || travel?.status === 2"
                       >En route</span
                     >
-                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-green-900" v-if="travel.status === 1"
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-green-900" v-if="travel?.status === 1"
                       >Arrivé</span
                     >
-                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-red-700" v-if="travel.status === 0"
+                    <span class="text-white py-1 px-2 w-24 text-center block rounded-l-full rounded-r-full bg-red-700" v-if="travel?.status === 0"
                       >Annulé</span
                     >
                   </div>
