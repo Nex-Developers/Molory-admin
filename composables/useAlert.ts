@@ -1,5 +1,5 @@
 export function showLoader(val: boolean, message?: string) {
-    console.log('loader', val)
+    // console.log('loader', val)
     useState<boolean>('showLoader').value  = val
     useState<string>('loaderMessage').value  = message
 }

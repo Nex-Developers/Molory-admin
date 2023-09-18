@@ -7,7 +7,7 @@ export interface IPromotion {
     startAt: Date
     endAt: Date
     status: number
-
+    isForDriver: boolean
     createdAt: Date
     updatedAt: Date
     deletedAt: Date

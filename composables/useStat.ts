@@ -1,9 +1,9 @@
 
 export async function  getStats() {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const stats = useState<any>('stats')
     try {
-        showLoader(true, 'Loading')
         const headers = {
             Authorization: 'Bearer ' + useState<string>('auth_token').value,
             'Content-Type': 'Application/json'

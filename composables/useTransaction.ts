@@ -3,6 +3,7 @@ import { ITransaction } from '../types/ITransaction';
 
 
 export async function  getTransactions() {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const withdrawals = useState<ITransaction[]>('transactions')
     try {

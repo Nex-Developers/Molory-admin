@@ -10,10 +10,10 @@ export async function getPricings() {
             'Content-Type': 'Application/json'
         }
         const { data } = await $fetch<any>(`${config.BASE_URL}/pricing`, { method: 'GET', headers })
-        console.log(data)
+        // console.log(data)
         useState<{ name: string; pricings: IPricing[]}[]>('pricings').value = data
         return data
-    } catch (err) {
+    } catch (err: any) {
         console.log(err.message)
     }
 }
@@ -25,7 +25,7 @@ export async function getPricings() {
 // }
 
 export async function addPricing(body: any) {
-    console.log(body)
+    // console.log(body)
     const config = useRuntimeConfig()
     console.log(useState<string>('auth_token').value)
     const headers = {

@@ -3,6 +3,7 @@ import { IPayment } from "~~/types"
 
 
 export async function  getPayments() {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const payments = useState<IPayment[]>('payments')
     try {

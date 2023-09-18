@@ -2,6 +2,7 @@ import { IPromotion } from './../types';
 
 
 export async function getPromotions() {
+    showLoader(true, 'Chargement...')
     const config = useRuntimeConfig()
     const Promotions = useState<IPromotion[]>('Promotions')
     try {
@@ -10,11 +11,14 @@ export async function getPromotions() {
             'Content-Type': 'Application/json'
         }
         const { data } = await $fetch<any>(`${config.BASE_URL}/promotion`, { method: 'GET', headers })
-        console.log(data)
+        // console.log(data)
         useState<IPromotion[]>('promotions').value = data
+        showLoader(false)
         return data
     } catch (err: any) {
-        console.log(err.message)
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 
@@ -25,6 +29,7 @@ export async function getPromotion(id: number) {
 }
 
 export async function addPromotion(body: any) {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const headers = {
         Authorization: 'Bearer ' + useState<string>('auth_token').value,
@@ -32,13 +37,17 @@ export async function addPromotion(body: any) {
     }
     try {
         const { data } = await $fetch<any>(`${config.BASE_URL}/promotion`, { method: "POST", headers, body })
-        getPromotions()
+        showLoader(false)
+        await getPromotions()
     } catch (err: any) {
-        console.log(err.message)
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 
 export async function updatePromotion(body: any) {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const headers = {
         Authorization: 'Bearer ' + useState<string>('auth_token').value,
@@ -46,13 +55,17 @@ export async function updatePromotion(body: any) {
     }
     try {
         const { data } = await $fetch<any>(`${config.BASE_URL}/promotion`, { method: "PATCH", headers, body })
-        getPromotions()
+        showLoader(false)
+        await getPromotions()
     } catch (err: any) {
-        console.log(err.message)
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 
 export async function deletePromotion(body: any) {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const headers = {
         Authorization: 'Bearer ' + useState<string>('auth_token').value,
@@ -60,9 +73,12 @@ export async function deletePromotion(body: any) {
     }
     try {
         const { data } = await $fetch<any>(`${config.BASE_URL}/promotion`, { method: "DELETE", headers, body })
-        getPromotions()
+        showLoader(false)
+        await getPromotions()
     } catch (err: any) {
-        console.log(err.message)
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 

@@ -14,6 +14,7 @@ getPromotions();
 const rightSidePanel = ref();
 
 const onAddPromotion= async (body: Partial<IPromotion>) => {
+  console.log(body)
   await addPromotion(body);
   rightSidePanel.value.onClose();
 };

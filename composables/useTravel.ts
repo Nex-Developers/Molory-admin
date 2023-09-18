@@ -1,9 +1,9 @@
 
 export async function getTravels() {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const travels = useState<any[]>('travels')
     try {
-        showLoader(true, 'Loading')
         const headers = {
             Authorization: 'Bearer ' + useState<string>('auth_token').value,
             'Content-Type': 'Application/json'

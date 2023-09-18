@@ -14,6 +14,18 @@ import { IPromotion } from "~~/types";
       <div class="w-full bg-white shadow-sm p-2 my-2">
        
         <div>
+
+          <div class="px-2 flex justify-between items-center w-full py-4">
+            <label for="">Pour Conducteur</label>
+            <input
+              placeholder="Nombre maximum de site"
+              id="isForDriver"
+              type="checkbox"
+              class="p-2 rounded text-lg"
+              v-model="form.isForDriver"
+            />          
+          </div>
+
           <div class="p-2 flex justify-between items-start">
             <input
               placeholder="Code promo"
@@ -23,6 +35,7 @@ import { IPromotion } from "~~/types";
             />
     
           </div>
+         
           <div class="px-2 py-0 flex justify-between items-start">
             <input
               placeholder="Reduction"

@@ -3,10 +3,10 @@ import { IWithdrawal } from './../types/IWithdrawal';
 
 
 export async function  getWithdrawals() {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     const withdrawals = useState<IWithdrawal[]>('withdrawals')
     try {
-        showLoader(true, 'Loading')
         const headers = {
             Authorization: 'Bearer ' + useState<string>('auth_token').value,
             'Content-Type': 'Application/json'

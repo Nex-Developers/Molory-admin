@@ -2,6 +2,7 @@ import { IVehicleType } from './../types';
 
 
 export async function getVehicleTypes() {
+    showLoader(true, 'Chargement...')
     const config = useRuntimeConfig()
     const vehicleTypes = useState<IVehicleType[]>('vehicleTypes')
     try {
@@ -10,11 +11,13 @@ export async function getVehicleTypes() {
             'Content-Type': 'Application/json'
         }
         const { data } = await $fetch<any>(`${config.BASE_URL}/vehicle-type`, { method: 'GET', headers })
-        console.log(data)
+        //console.log(data) 
         useState<IVehicleType[]>('vehicleTypes').value = data
         return data
-    } catch (err) {
-        console.log(err.message)
+    } catch (err: any) {
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 
@@ -25,6 +28,7 @@ export async function getVehicleType(id: number) {
 }
 
 export async function addVehicleType(body: any) {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     console.log(useState<string>('auth_token').value)
     const headers = {
@@ -34,12 +38,15 @@ export async function addVehicleType(body: any) {
     try {
         const { data } = await $fetch<any>(`${config.BASE_URL}/vehicle-type`, { method: "POST", headers, body })
         getVehicleTypes()
-    } catch (err) {
-        console.log(err.message)
+    } catch (err: any) {
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 
 export async function updateVehicleType(body: any) {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     console.log(useState<string>('auth_token').value)
     const headers = {
@@ -48,13 +55,17 @@ export async function updateVehicleType(body: any) {
     }
     try {
         const { data } = await $fetch<any>(`${config.BASE_URL}/vehicle-type`, { method: "PATCH", headers, body })
+        showLoader(false)
         getVehicleTypes()
-    } catch (err) {
-        console.log(err.message)
+    } catch (err: any) {
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 
 export async function deleteVehicleType(body: any) {
+    showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     console.log(useState<string>('auth_token').value)
     const headers = {
@@ -63,9 +74,12 @@ export async function deleteVehicleType(body: any) {
     }
     try {
         const { data } = await $fetch<any>(`${config.BASE_URL}/vehicle-type`, { method: "DELETE", headers, body })
+        showLoader(false)
         getVehicleTypes()
-    } catch (err) {
-        console.log(err.message)
+    } catch (err: any) {
+        showLoader(false)
+        // console.log(err.message)
+        window.alert(err.message)
     }
 }
 
