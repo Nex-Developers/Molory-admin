@@ -247,7 +247,7 @@ const isLoadingData = useState<boolean>("showLoader");
                 <div class="grid grid-cols-2 gap-2">
                   <div
                     v-for="document in user.documents"
-                    :key="document.id"
+                    :key="document.name"
                     class="items-center border border-tertiary text-xs rounded-md p-2 my-2 "
                   >
                     <div class="relative">
@@ -288,22 +288,22 @@ const isLoadingData = useState<boolean>("showLoader");
                       <div class="flex flex-col gap-2" v-if=" document.name === 'ID Card'">
                         <DocumentItem
                         title="Devant"
-                        :path="user.idCardFront"
+                        :path="document.urlFront"
                       />
                       <DocumentItem
                         title="Derriere"
-                        :path="user.idCardBack"
+                        :path="document.urlBack"
                       />
                       </div>
 
                       <div class="flex flex-col gap-2" v-if=" document.name === 'Driver License'">
                         <DocumentItem
                         title="Devant"
-                        :path="user.idCardFront"
+                        :path="document.urlFront"
                       />
                       <DocumentItem
                         title="Derriere"
-                        :path="user.idCardBack"
+                        :path="document.urlBack"
                       />
                       </div>
 
