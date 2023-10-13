@@ -9,6 +9,7 @@ definePageMeta({
 const route = useRoute();
 const id = +route.params.id;
 const user = await getUser(id);
+const wallet = await getWallet(id);
 const isLoadingData = useState<boolean>("showLoader");
 </script>
 
@@ -202,6 +203,60 @@ const isLoadingData = useState<boolean>("showLoader");
               </div>
             </div>
           </div>
+
+          <!-- Wallet -->
+
+          <div class="bg-white p-3 shadow-sm rounded-sm">
+            <div
+              class="flex items-center space-x-2 font-semibold text-secondary leading-8 mb-3"
+            >
+              <span class="text-tertiary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6 fill-current"
+                  viewBox="0 0 512 512"
+                >
+                  <title>Wallet</title>
+                  <path
+                    d="M95.5 104h320a87.73 87.73 0 0111.18.71 66 66 0 00-77.51-55.56L86 94.08h-.3a66 66 0 00-41.07 26.13A87.57 87.57 0 0195.5 104zM415.5 128h-320a64.07 64.07 0 00-64 64v192a64.07 64.07 0 0064 64h320a64.07 64.07 0 0064-64V192a64.07 64.07 0 00-64-64zM368 320a32 32 0 1132-32 32 32 0 01-32 32z"
+                  />
+                  <path
+                    d="M32 259.5V160c0-21.67 12-58 53.65-65.87C121 87.5 156 87.5 156 87.5s23 16 4 16-18.5 24.5 0 24.5 0 23.5 0 23.5L85.5 236z"
+                  />
+                </svg>
+              </span>
+              <span class="tracking-wide">Portefeuille</span>
+            </div>
+            <div class="flex gap-2">
+
+            <div
+              class="items-center border border-primary rounded-md p-2 my-2 w-1/2"
+            >
+              <h2 class="text-md font-bold text-center underline">Solde</h2>
+              <div class="text-center pt-8">
+                <span class="text-primary capitalize text-center text-2xl font-bold">
+                    5000 FCFA</span
+                  >
+              </div>
+                 
+              
+            </div>
+           
+            <div
+              class=" space-y-4 rounded-md p-2 my-2 w-1/2 flex-none border border-primary"
+            >
+            <div class="w-full flex justify-center">
+              <input type="number" step="100" class=" max-w-lg p-2 border text-center text-lg" placeholder="Montant">
+            </div>
+            <div class="w-full gap-2 flex justify-center">
+              <button class="w-32 bg-primary py-2 text-lg text-white rounded"> Recharger </button>
+              <button class="w-32 border border-primary py-2 text-lg text-primary rounded"> Retirer </button>
+            </div>
+            </div>
+          </div>
+
+          </div>
+
           <!-- Documents start -->
           <div class="bg-white p-3 shadow-sm rounded-sm">
             <div class="">
@@ -248,7 +303,7 @@ const isLoadingData = useState<boolean>("showLoader");
                   <div
                     v-for="document in user.documents"
                     :key="document.name"
-                    class="items-center border border-tertiary text-xs rounded-md p-2 my-2 "
+                    class="items-center border border-tertiary text-xs rounded-md p-2 my-2"
                   >
                     <div class="relative">
                       <h2 class="text-center text-lg text-secondary">
@@ -284,29 +339,34 @@ const isLoadingData = useState<boolean>("showLoader");
                       >
                         Rejection message: "{{ document.rejectionMessage }}""
                       </p>
-                      
-                      <div class="flex flex-col gap-2" v-if=" document.name === 'ID Card'">
+
+                      <div
+                        class="flex flex-col gap-2"
+                        v-if="document.name === 'ID Card'"
+                      >
                         <DocumentItem
-                        title="Devant"
-                        :path="document.urlFront"
-                      />
-                      <DocumentItem
-                        title="Derriere"
-                        :path="document.urlBack"
-                      />
+                          title="Devant"
+                          :path="document.urlFront"
+                        />
+                        <DocumentItem
+                          title="Derriere"
+                          :path="document.urlBack"
+                        />
                       </div>
 
-                      <div class="flex flex-col gap-2" v-if=" document.name === 'Driver License'">
+                      <div
+                        class="flex flex-col gap-2"
+                        v-if="document.name === 'Driver License'"
+                      >
                         <DocumentItem
-                        title="Devant"
-                        :path="document.urlFront"
-                      />
-                      <DocumentItem
-                        title="Derriere"
-                        :path="document.urlBack"
-                      />
+                          title="Devant"
+                          :path="document.urlFront"
+                        />
+                        <DocumentItem
+                          title="Derriere"
+                          :path="document.urlBack"
+                        />
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -314,7 +374,6 @@ const isLoadingData = useState<boolean>("showLoader");
             </div>
             <!-- End of Experience and education grid -->
           </div>
-
           <!-- documents end -->
 
           <!-- Vehicles start -->
