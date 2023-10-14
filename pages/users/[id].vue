@@ -258,7 +258,7 @@ const onWithdraw = async () => {
               <h2 class="text-md font-bold text-center underline">Solde</h2>
               <div class="text-center pt-8">
                 <span class="text-primary capitalize text-center text-2xl font-bold">
-                    {{  wallet?.balance }} FCFA</span
+                    {{  wallet?.balance || 0 }} FCFA</span
                   >
               </div>
                  
