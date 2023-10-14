@@ -9,8 +9,31 @@ definePageMeta({
 const route = useRoute();
 const id = +route.params.id;
 const user = await getUser(id);
-const wallet = await getWallet(id);
+const wallet = useState<any>();
+const amount = useState<number>()
 const isLoadingData = useState<boolean>("showLoader");
+const reloadWallet  = async () => {
+  const  data = await getWallet(id);
+  console.log('wallet', data);
+  wallet.value = data;
+}
+reloadWallet();
+
+const onRecharge = async () => {
+  console.log(amount.value);
+  if (!amount.value) return;
+  const res = await rechargeWallet(id, amount.value)
+  console.log(res);
+  reloadWallet();
+}
+
+const onWithdraw = async () => {
+  console.log(amount.value);
+  if (!amount.value) return;
+  const res = await withdrawWallet(id, amount.value)
+  console.log(res);
+  reloadWallet();
+}
 </script>
 
 <template>
@@ -235,7 +258,7 @@ const isLoadingData = useState<boolean>("showLoader");
               <h2 class="text-md font-bold text-center underline">Solde</h2>
               <div class="text-center pt-8">
                 <span class="text-primary capitalize text-center text-2xl font-bold">
-                    5000 FCFA</span
+                    {{  wallet?.balance }} FCFA</span
                   >
               </div>
                  
@@ -246,11 +269,11 @@ const isLoadingData = useState<boolean>("showLoader");
               class=" space-y-4 rounded-md p-2 my-2 w-1/2 flex-none border border-primary"
             >
             <div class="w-full flex justify-center">
-              <input type="number" step="100" class=" max-w-lg p-2 border text-center text-lg" placeholder="Montant">
+              <input type="number" step="100" class=" max-w-lg p-2 border text-center text-lg" placeholder="Montant" v-model="amount">
             </div>
             <div class="w-full gap-2 flex justify-center">
-              <button class="w-32 bg-primary py-2 text-lg text-white rounded"> Recharger </button>
-              <button class="w-32 border border-primary py-2 text-lg text-primary rounded"> Retirer </button>
+              <button class="w-32 bg-primary py-2 text-lg text-white rounded" @click="onRecharge"> Recharger </button>
+              <button class="w-32 border border-primary py-2 text-lg text-primary rounded" @click="onWithdraw"> Retirer </button>
             </div>
             </div>
           </div>

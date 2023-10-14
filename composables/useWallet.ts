@@ -45,6 +45,8 @@ export async function getWallet(id: number) {
 }
 
 export async function rechargeWallet(id: number, amount: number) {
+    const res = window.confirm('Voulez vous effectuer une recharge de ' + amount + ' F CFA sur ce portefeuille?')
+    if (!res) return
     showLoader(true, 'Veuillez patienter...')
     const config = useRuntimeConfig()
     console.log(useState<string>('auth_token').value)
@@ -53,9 +55,10 @@ export async function rechargeWallet(id: number, amount: number) {
         'Content-Type': 'Application/json'
     }
     try {
-        await $fetch<any>(`${config.BASE_URL}/wallet`, { method: "PATCH", headers, body: { id, amount} })
+         await $fetch<any>(`${config.BASE_URL}/recharge-wallet`, { method: "PATCH", headers, body: { userId: id, amount} })
         showLoader(false)
-        return await getWallet(id)
+        return true
+        // return await getWallet(id)
     } catch (err: any) {
         showLoader(false)
         // console.log(err.message)
@@ -65,7 +68,10 @@ export async function rechargeWallet(id: number, amount: number) {
 
 
 export async function withdrawWallet(id: number, amount: number) {
+    const res = window.confirm('Voulez vous effectuer un retrait de ' + amount + ' F CFA sur ce portefeuille?')
+    if (!res) return
     showLoader(true, 'Veuillez patienter...')
+   
     const config = useRuntimeConfig()
     console.log(useState<string>('auth_token').value)
     const headers = {
@@ -73,9 +79,10 @@ export async function withdrawWallet(id: number, amount: number) {
         'Content-Type': 'Application/json'
     }
     try {
-        await $fetch<any>(`${config.BASE_URL}/wallet`, { method: "PATCH", headers, body: { id, amount} })
+        await $fetch<any>(`${config.BASE_URL}/withdraw-wallet`, { method: "PATCH", headers, body: { userId: id, amount} })
         showLoader(false)
-        return await getWallet(id)
+        //  return await getWallet(id)
+        return true
     } catch (err: any) {
         // console.log(err.message)
         window.alert(err.message)
