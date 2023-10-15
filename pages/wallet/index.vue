@@ -150,6 +150,7 @@
                 <h3 class="text-sm w-96">
                   <span class="text-red-900" v-if="transaction.type==='withdraw'">Retrait</span>
                   <span class="text-green-900" v-if="transaction.type==='deposit'">Dépot</span>
+                  <span class="text-green-900" v-if="transaction.type==='recharge'">Dépot</span>
                    <span class="text-blue-700" v-if="transaction.type==='refund'">Remboursement</span>
                    <span class="text-purple-700" v-if="transaction.type==='payment'">Paiement</span>
 

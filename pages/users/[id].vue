@@ -10,7 +10,7 @@ const route = useRoute();
 const id = +route.params.id;
 const user = await getUser(id);
 const wallet = useState<any>();
-const amount = useState<number>()
+const amount = useState<number | null>()
 const isLoadingData = useState<boolean>("showLoader");
 const reloadWallet  = async () => {
   const  data = await getWallet(id);
@@ -23,7 +23,7 @@ const onRecharge = async () => {
   console.log(amount.value);
   if (!amount.value) return;
   const res = await rechargeWallet(id, amount.value)
-  console.log(res);
+  amount.value = null;
   reloadWallet();
 }
 
@@ -31,7 +31,7 @@ const onWithdraw = async () => {
   console.log(amount.value);
   if (!amount.value) return;
   const res = await withdrawWallet(id, amount.value)
-  console.log(res);
+  amount.value = null;
   reloadWallet();
 }
 </script>

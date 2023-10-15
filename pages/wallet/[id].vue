@@ -25,7 +25,10 @@
               <span class="text-green-900" v-if="transaction.type === 'deposit'"
                 >Dépot</span
               >
-              <span class="text-blue-700" v-if="transaction.type === 'refund'"
+
+              <span class="text-green-900" v-if="transaction.type === 'recharge'"
+                >Recharge</span
+              >              <span class="text-blue-700" v-if="transaction.type === 'refund'"
                 >Remboursement</span
               >
               <span
@@ -67,7 +70,7 @@
               <h3>Montant</h3>
             </div>
             <div class="w-full">
-              <h3 class="text-primary">: 5000 FCFA</h3>
+              <h3 class="text-primary">: {{ transaction?.amount }} FCFA</h3>
             </div>
           </div>
 
