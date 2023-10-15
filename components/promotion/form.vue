@@ -46,7 +46,7 @@ import { IPromotion } from "~~/types";
           </div>
           <div class="px-2 py-0 flex justify-between items-start">
             <input
-              placeholder="Nombre maximum de site"
+              placeholder="Nombre maximum d'utilisation"
               type="number"
               class="w-full border p-2 rounded text-lg"
               v-model="form.limit"
