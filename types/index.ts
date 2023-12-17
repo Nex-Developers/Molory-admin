@@ -1,3 +1,4 @@
+import { IPublication } from './IPublication';
 import { IPromotion } from './IPromotion';
 import { IQuestion } from './IQuestion';
 import { IAnswer } from './IAnswer';
@@ -22,5 +23,6 @@ export {
     IAnswer,
     IQuestion,
     IPromotion,
-    ITransaction
+    ITransaction,
+    IPublication
 }
